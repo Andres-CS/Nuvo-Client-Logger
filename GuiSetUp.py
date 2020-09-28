@@ -1,6 +1,26 @@
 # Set Up File -> Reads all the files needed to setup the GUI part of the application.
 from Profiles.paperPfl import paperPfl
 from Client.ClientMgt import get_clients
+import json
+
+#---------------------- GUI RETRIVAL ------------------------
+
+def sec1(gui_config):
+    section_widgets = []
+    #Parse Widgets Section 
+    for widget in gui_config["1"]["1"]:
+        for properties in gui_config["1"]["1"][widget]:
+            if gui_config["1"]["1"][widget][properties] == "Menu":
+                if gui_config["1"]["1"][widget]["callFunction"] == True:
+                    #Get Clients
+                    section_widgets.append(get_clients())
+                    break
+            if widget in section_widgets:
+                continue
+            else:
+                section_widgets.append(widget)
+    
+    return section_widgets
 
 
 '''
@@ -20,11 +40,31 @@ def get_lable_settings(*listofprofiles):
     return profiles
 
 
+
+def tt_(listofprofiles):
+    profiles   = list()
+
+    #loop through list of profiles
+    for prfl in listofprofiles:
+        profiles.append(prfl)
+
+    return profiles
+
 #---------------------- FORM PANEL ------------------------
 
 see_profile = "See Profile"
-F_sec_0=get_lable_settings("Client   ", get_clients(), "New Client")
+
+#Get Widgets Set
+with open("./widgetsSetup.json") as config:
+    gui_File = json.load(config)
+
+
+F_sec_0 = tt_(sec1(gui_File))
+#F_sec_0=get_lable_settings("Client   ", get_clients(), "New Client")
+
 F_sec_1=get_lable_settings("Job ID","Job Name","Type of Book","Number of Copies","Number of Pages","Number of Printers")
+#F_sec_1=get_lable_settings("Job ID","Job Name","Type of Book","Number of Copies","Number of Pages","Number of Printers")
+
 F_sec_2=get_lable_settings("Type of Siding","Single","Double")
 F_sec_3= get_lable_settings("PROFILES SELECTION", "Paper", paperPfl().get_profilesnames(), see_profile, "Printer", ["TOSHIBA","CANON"],see_profile )
 F_sec_4 = get_lable_settings("Extras","Binding",["None","Wire","Plastic Coil","Plastic Combo"], "Inserts")

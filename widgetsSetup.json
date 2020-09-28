@@ -1,0 +1,90 @@
+{
+    "Frames_Sections": 6,
+    "1":{
+        "1":{
+            
+            "Clients":{
+                "widget":"Label",
+                "callFunction":false
+            },
+
+            "Chocies":{
+                "widget":"Menu",
+                "callFunction":true
+            },
+
+            "New Client":{
+                "widget":"Button",
+                "callFunction":false
+            }
+        }
+    },
+
+    "2":{
+        
+        "1":{
+            "Job ID":{
+                "widget":"Label",
+                "callFunction":false
+            },
+            "TextInput":{
+                "widget":"TextInput",
+                "callFunction":false
+            }
+        },
+
+        "2":{
+            "Job Name":{
+                "widget":"Label",
+                "callFunction":false
+            },
+            "TextInput":{
+                "widget":"TextInput",
+                "callFunction":false
+            }
+        },
+
+        "3":{
+            "Type of Book":{
+                "widget":"Label",
+                "callFunction":false
+            },
+            "TextInput":{
+                "widget":"TextInput",
+                "callFunction":false
+            }
+        },
+
+        "4":{
+            "Number of Copies":{
+                "widget":"Label",
+                "callFunction":false
+            },
+            "TextInput":{
+                "widget":"TextInput",
+                "callFunction":false
+            }
+        },
+
+        "5":{
+            "Number of Pages":{
+                "widget":"Label",
+                "callFunction":false
+            },
+            "TextInput":{
+                "widget":"TextInput",
+                "callFunction":false
+            }
+        },
+        "6":{
+            "Number of Printers":{
+                "widget":"Label",
+                "callFunction":false
+            },
+            "TextInput":{
+                "widget":"TextInput",
+                "callFunction":false
+            }
+        }        
+    }
+}
