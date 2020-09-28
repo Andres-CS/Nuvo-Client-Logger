@@ -73,7 +73,7 @@ def get_label_settings(listofprofiles):
 see_profile = "See Profile"
 
 #Get Widgets Set
-with open("./widgetsSetup.json") as config:
+with open("./FormPanel_WidgetsSetup.json") as config:
     gui_File = json.load(config)
 
 
