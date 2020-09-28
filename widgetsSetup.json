@@ -170,5 +170,53 @@
                 "functionName":null
             }
         }
+    },
+
+    "5":{
+        "0":{
+            "Extras":{
+                "widget":"Label",
+                "callFunction":false,
+                "functionName":null
+            }
+        },
+
+        "1":{
+            "Binding":{
+                "widget":"Label",
+                "callFunction":false,
+                "functionName":null
+            },
+
+            "Choices":{
+                "widget":"Menu",
+                "callFunction":true,
+                "functionName":"Bindings"
+            }
+        },
+
+        "2":{
+            "Inserts":{
+                "widget":"Label",
+                "callFunction":false,
+                "functionName":null
+            },
+
+            "Spin":{
+                "widget":"Spiner",
+                "callFunction":false,
+                "functionName":null
+            }
+        }
+    },
+
+    "6":{
+        "0":{
+            "Submit":{
+                "widget":"Button",
+                "callFunction":false,
+                "functionName":null
+            }
+        }
     }
 }

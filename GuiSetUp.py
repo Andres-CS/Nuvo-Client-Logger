@@ -8,11 +8,12 @@ additionalData = {
     "Clients":get_clients(),
     "Papers": paperPfl().get_profilesnames(),
     "Printers": ["TOSHIBA","CANON"],
+    "Bindings": ["None","Wire","Plastic Coil","Plastic Combo"],
 }
 
-#---------------------- GUI RETRIVAL ------------------------
+#---------------------- GUI CONFIG RETRIVAL ------------------------
 
-def sec1(gui_config,section,rows=0):
+def FormSections(gui_config,section,rows=0):
     section_widgets = []
     section = str(section)
     #Parse Widgets Section
@@ -58,7 +59,7 @@ def get_lable_settings(*listofprofiles):
 
     return profiles
 
-def tt_(listofprofiles):
+def get_label_settings(listofprofiles):
     profiles   = list()
 
     #loop through list of profiles
@@ -76,22 +77,12 @@ with open("./widgetsSetup.json") as config:
     gui_File = json.load(config)
 
 
-F_sec_0 = tt_(sec1(gui_File,1,1))
-#F_sec_0=get_lable_settings("Client   ", get_clients(), "New Client")
-
-F_sec_1 = tt_(sec1(gui_File,2,6))
-#F_sec_1=get_lable_settings("Job ID","Job Name","Type of Book","Number of Copies","Number of Pages","Number of Printers")
-
-F_sec_2 = tt_(sec1(gui_File,3,2))
-#F_sec_2=get_lable_settings("Type of Siding","Single","Double")
-
-
-F_sec_3 = tt_(sec1(gui_File,4,3))
-#F_sec_3= get_lable_settings("PROFILES SELECTION", "Paper", paperPfl().get_profilesnames(), see_profile, "Printer", ["TOSHIBA","CANON"],see_profile )
-
-
-F_sec_4 = get_lable_settings("Extras","Binding",["None","Wire","Plastic Coil","Plastic Combo"], "Inserts")
-F_sec_5 = get_lable_settings("Submitt")
+F_sec_0 = get_label_settings( FormSections(gui_File,1,1) )
+F_sec_1 = get_label_settings( FormSections(gui_File,2,6) )
+F_sec_2 = get_label_settings( FormSections(gui_File,3,2) )
+F_sec_3 = get_label_settings( FormSections(gui_File,4,3) )
+F_sec_4 = get_label_settings( FormSections(gui_File,5,3) )
+F_sec_5 = get_label_settings( FormSections(gui_File,6,1) )
 
 Labels_for_UserForm = [F_sec_0,F_sec_1,F_sec_2,F_sec_3,F_sec_4,F_sec_5]
 
