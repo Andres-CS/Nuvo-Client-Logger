@@ -1,0 +1,13 @@
+{
+    "specs_file": "DB_specs.json",
+    "current_db": "Database_1",
+    "warning": 
+    {
+        "level" : 1,
+        "1" : "DB is at capacity < 25%",
+        "2" : "DB is at capacity < 50%",
+        "3" : "DB is at capacity < 75%",
+        "4" : "DB is at capacity < 95%"
+    },
+    "Database_1": "Database_1.db"
+}

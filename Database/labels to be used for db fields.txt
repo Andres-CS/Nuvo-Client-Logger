@@ -1,0 +1,2 @@
+ud_keys ['Type of Book', 'Job ID', 'Job Name', 'Number of Printers', 'Coil', 'Number of Copies', 'Printer', 'Siding', 'Number of Pages', 'Client', 'Paper', 'Inserts']
+rd_keys ['Number Sheet PerBook', 'Number Rims', 'Number Cartons', 'Number Sheets', 'Coil Size']

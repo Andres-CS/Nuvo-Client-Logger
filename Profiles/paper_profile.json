@@ -1,0 +1,9 @@
+{
+	"WillCopy - Letter": {"type_paper": "Plain 1", "size":{"name":"Letter","hight":11, "length":8.5},"weight":20 , "sheet_per_rim": 500, "rim_per_carton": 10, "Alias":"Book Block"},
+	"Xerox - Letter": {"type_paper": "Bold", "size":{"name":"Letter","hight":11, "length":8.5},"weight":28 , "sheet_per_rim": 400, "rim_per_carton": 10, "Alias":"Term Sheet"},
+	"WillCopy - Ledger": {"type_paper": "Plain 1", "size":{"name":"Ledger","hight":17, "length":11},"weight":20 , "sheet_per_rim": 250, "rim_per_carton": 10, "Alias":"Book Block"},
+	"WillCopy - Tabloid": {"type_paper": "Plain 1", "size":{"name":"Tabloid","hight":14, "length":8.5},"weight":20 , "sheet_per_rim": 250, "rim_per_carton": 10, "Alias":"Work Order"},
+	"Xerox - Ledger": {"type_paper": "Bold", "size":{"name":"Ledger","hight":17, "length":11},"weight":28 , "sheet_per_rim": 200, "rim_per_carton": 10, "Alias":"Book Block"},
+	"Hammermill - Letter": {"type_paper": "Bold", "size":{"name":"Letter","hight":11, "length":8.5},"weight":28 , "sheet_per_rim": 200, "rim_per_carton": 10, "Alias":"TCI Book"},
+	"HighSpeed - Letter": {"type_paper": "Plain", "size":{"name":"Letter","hight":11, "length":8.5},"weight":20 , "sheet_per_rim": 500, "rim_per_carton": 10, "Alias":"Book Block"}	
+}

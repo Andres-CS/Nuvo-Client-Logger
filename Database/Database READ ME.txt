@@ -1,0 +1,9 @@
+#READ ME FILE
+
+Warning levels for DB Managment
+Code    Level   Note
+ 1      Low     DB is at capacity < 25%.
+ 2      Medium  DB is at capacity < 50%.
+ 3      High    DB is at capacity < 75%.
+ 4      Highest DB is at capacity < 95%.
+ 

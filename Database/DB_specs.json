@@ -1,0 +1,16 @@
+{
+	"Database_1" : 
+	{
+		"warning_level" : 1,
+		"db_name": "Database_1.db",
+		"db_tables": 
+		{
+			"table_1":
+			{
+				"tabel_name": "table_1",
+				"fields_name" : ["client","job_id","job_name","number_of_copies","number_of_pages","siding","paper", "printer","type_of_book","number_sheets","number_cartons","coil", "coil_size","number_of_printers","inserts","time_printing","number_rims","number_sheet_per_book"],
+				"fields_type" : ["TEXT","REAL","TEXT","REAL","REAL","REAL","TEXT", "TEXT","TEXT","REAL","REAL","TEXT","TEXT","REAL","REAL","TEXT","REAL","REAL"]
+			}
+		}
+	}
+}
