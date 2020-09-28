@@ -36,10 +36,6 @@ def FormSections(gui_config,section,rows=0):
                     continue
                 else:
                     section_widgets.append(widget)
-    
-    print(section_widgets)
-    print()
-
     return section_widgets
 
 
