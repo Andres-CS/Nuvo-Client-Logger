@@ -1,7 +1,7 @@
 {
     "Frames_Sections": 6,
     "1":{
-        "1":{
+        "0":{
             
             "Clients":{
                 "widget":"Label",
@@ -22,7 +22,7 @@
 
     "2":{
         
-        "1":{
+        "0":{
             "Job ID":{
                 "widget":"Label",
                 "callFunction":false
@@ -33,7 +33,7 @@
             }
         },
 
-        "2":{
+        "1":{
             "Job Name":{
                 "widget":"Label",
                 "callFunction":false
@@ -44,7 +44,7 @@
             }
         },
 
-        "3":{
+        "2":{
             "Type of Book":{
                 "widget":"Label",
                 "callFunction":false
@@ -55,8 +55,8 @@
             }
         },
 
-        "4":{
-            "Number of Copies":{
+        "3":{
+            "Copies":{
                 "widget":"Label",
                 "callFunction":false
             },
@@ -66,8 +66,8 @@
             }
         },
 
-        "5":{
-            "Number of Pages":{
+        "4":{
+            "Pages":{
                 "widget":"Label",
                 "callFunction":false
             },
@@ -76,8 +76,8 @@
                 "callFunction":false
             }
         },
-        "6":{
-            "Number of Printers":{
+        "5":{
+            "Printers":{
                 "widget":"Label",
                 "callFunction":false
             },
@@ -86,5 +86,25 @@
                 "callFunction":false
             }
         }        
+    },
+
+    "3":{
+        "0":{
+            "Type of Siding":{
+                "widget":"Label",
+                "callFunction":false
+            }
+        },
+
+        "1":{
+            "Single":{
+                "widget":"Button",
+                "callFunction":false
+            },
+            "Double":{
+                "widget":"Button",
+                "callFunction":false
+            }
+        }
     }
 }
