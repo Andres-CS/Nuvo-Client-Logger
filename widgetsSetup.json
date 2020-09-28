@@ -5,17 +5,20 @@
             
             "Clients":{
                 "widget":"Label",
-                "callFunction":false
+                "callFunction":false,
+                "functionName":null
             },
 
             "Chocies":{
                 "widget":"Menu",
-                "callFunction":true
+                "callFunction":true,
+                "functionName":"Clients"
             },
 
             "New Client":{
                 "widget":"Button",
-                "callFunction":false
+                "callFunction":false,
+                "functionName":null
             }
         }
     },
@@ -25,85 +28,146 @@
         "0":{
             "Job ID":{
                 "widget":"Label",
-                "callFunction":false
+                "callFunction":false,
+                "functionName":null
             },
             "TextInput":{
                 "widget":"TextInput",
-                "callFunction":false
+                "callFunction":false,
+                "functionName":null
             }
         },
 
         "1":{
             "Job Name":{
                 "widget":"Label",
-                "callFunction":false
+                "callFunction":false,
+                "functionName":null
             },
             "TextInput":{
                 "widget":"TextInput",
-                "callFunction":false
+                "callFunction":false,
+                "functionName":null
             }
         },
 
         "2":{
             "Type of Book":{
                 "widget":"Label",
-                "callFunction":false
+                "callFunction":false,
+                "functionName":null
             },
             "TextInput":{
                 "widget":"TextInput",
-                "callFunction":false
+                "callFunction":false,
+                "functionName":null
             }
         },
 
         "3":{
             "Copies":{
                 "widget":"Label",
-                "callFunction":false
+                "callFunction":false,
+                "functionName":null
             },
             "TextInput":{
                 "widget":"TextInput",
-                "callFunction":false
+                "callFunction":false,
+                "functionName":null
             }
         },
 
         "4":{
             "Pages":{
                 "widget":"Label",
-                "callFunction":false
+                "callFunction":false,
+                "functionName":null
             },
             "TextInput":{
                 "widget":"TextInput",
-                "callFunction":false
+                "callFunction":false,
+                "functionName":null
             }
         },
         "5":{
             "Printers":{
                 "widget":"Label",
-                "callFunction":false
+                "callFunction":false,
+                "functionName":null
             },
             "TextInput":{
                 "widget":"TextInput",
-                "callFunction":false
+                "callFunction":false,
+                "functionName":null
             }
-        }        
+        }
     },
 
     "3":{
         "0":{
             "Type of Siding":{
                 "widget":"Label",
-                "callFunction":false
+                "callFunction":false,
+                "functionName":null
             }
         },
 
         "1":{
             "Single":{
                 "widget":"Button",
-                "callFunction":false
+                "callFunction":false,
+                "functionName":null
             },
             "Double":{
                 "widget":"Button",
-                "callFunction":false
+                "callFunction":false,
+                "functionName":null
+            }
+        }
+    },
+
+    "4":{
+        "0":{
+            "Profiles Selection":{
+                "widget":"Label",
+                "callFunction":false,
+                "functionName":null
+            }
+        },
+
+        "1":{
+            "Paper":{
+                "widget":"Label",
+                "callFunction":false,
+                "functionName":null
+            },
+            "Choices":{
+                "widget":"Menu",
+                "callFunction":true,
+                "functionName":"Papers"
+            },
+            "Paper Profile":{
+                "widget":"Button",
+                "callFunction":false,
+                "functionName":null
+            }
+        },
+
+        "2":{
+            "Printer":{
+                "widget":"Label",
+                "callFunction":false,
+                "functionName":null
+            },
+            "Choices":{
+                "widget":"Menu",
+                "callFunction":true,
+                "functionName":"Printers"
+            },
+            "Printer Profile":{
+                "widget":"Button",
+                "callFunction":false,
+                "functionName":null
             }
         }
     }
