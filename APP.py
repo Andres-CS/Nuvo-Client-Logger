@@ -4,19 +4,19 @@ import wx
 from Database.Database_Setup import DB_Setup
 
 '''GuiSetUp: reads config files for the panels'''
-from GuiSetUp import Labels_for_UserForm
-from GuiSetUp import R_sec_0, R_sec_1, R_sec_2, R_sec_3
+from GUI.GuiSetUp import Labels_for_UserForm
+from GUI.GuiSetUp import R_sec_0, R_sec_1, R_sec_2, R_sec_3
 
 '''ApplicationClc, MainFrameGui: modules used for creation of skeleton for window app.'''
-from Application import Paper_Calculator
-from MainFrameGui import mainFrame
+from GUI.Application import Paper_Calculator
+from GUI.MainFrameGui import mainFrame
 
 '''SideNavegation: moduel used to create left-align tab menu for panel navegation.'''
-from SideNavegation import tabPanel, TabMenu
+from GUI.SideNavegation import tabPanel, TabMenu
 
 '''FormPanelGui, RecordPanelGui: modules used to create the appropiate GUI sections of the window app.'''
-from FormPanelGui import formPanel
-from RecordPanelGui import recordPanel
+from GUI.FormPanel.FormPanelGui import formPanel
+from GUI.RecordsPanel.RecordPanelGui import recordPanel
 
 
 

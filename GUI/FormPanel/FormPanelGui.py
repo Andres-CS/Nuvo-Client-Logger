@@ -1,36 +1,37 @@
 #Gui -> User Input Section.
 
 import wx
+import wx.lib.scrolledpanel as scrolled
 
-from NewClientDialog import newclient_dialog
+from .Dialogs.NewClientDialog import newclient_dialog
+from .Dialogs.ProfileDialog import profiles_dlg
+from .Dialogs.ResultDialog import result_Dialog
 from Client.ClientMgt import get_clients
 from Profiles.paperPfl import paperPfl
-from GUI_profile_dialog import profiles_dlg
-from FormUserDataCheck import form_missingdata, form_checkDatatype, form_correctDataType
+from .FormUserDataCheck import form_missingdata, form_checkDatatype, form_correctDataType
 from programALU import ALU
-from ResultDialogGui import result_Dialog
 
 
-class formPanel(wx.Panel):
-    def __init__(self,parent, sec0lbs, sec1lbs, sec2lbs, sec3lbs, sec4lbs, sbmtBtn):
+class formPanel(scrolled.ScrolledPanel):
+    def __init__(self,parent, Labels_for_UserForm):
 
         #Initialize wx.Panel
-        M_Panel = wx.Panel.__init__(self,parent,-1)
+        M_Panel = scrolled.ScrolledPanel.__init__(self,parent,-1)
         '''------------------------------------------------------------
                           Declaration of Sections
         ------------------------------------------------------------'''
         #----------Section 1 - Elements--------------
-        self.sec_0_labels = sec0lbs
+        self.sec_0_labels = Labels_for_UserForm[0]
         #----------Section 1 - Elements--------------
-        self.sec_1_labels = sec1lbs
+        self.sec_1_labels = Labels_for_UserForm[1]
         #----------Section 2 - Elements--------------
-        self.sec_2_labels = sec2lbs
+        self.sec_2_labels = Labels_for_UserForm[2]
         #----------Section 3 - Elements--------------
-        self.sec_3_labels = sec3lbs
+        self.sec_3_labels = Labels_for_UserForm[3]
         #----------Section 4 - Elements--------------
-        self.sec_4_labels = sec4lbs
+        self.sec_4_labels = Labels_for_UserForm[4]
         #----------Submit Button Section--------------
-        self.submitSection = sbmtBtn
+        self.submitSection = Labels_for_UserForm[5]
         #------------Sizers - Elements----------------
         sec_0_sizer = list()
         sec_1_sizer = list()
@@ -54,17 +55,10 @@ class formPanel(wx.Panel):
                                Section Line Separator
         ------------------------------------------------------------'''
         self.section_line_separator=list()
+        #RANGE IS INPUT HARD-CODED BY THE CODER BASED ON THE NUMBER OF SECTIONS CREATED
         for num_of_sections in range(5):
             self.section_line_separator.append(self.InsertSeparatorLine("h"))
         
-        '''------------------------------------------------------------
-                                Scroll Bar
-        ------------------------------------------------------------'''
-        
-        self.ScrBar = wx.ScrollBar(self,id=wx.ID_ANY,style=wx.VERTICAL)
-        ScrBar_sizer = wx.BoxSizer(wx.HORIZONTAL)
-        ScrBar_sizer.Add(self.ScrBar,0,wx.ALL,5)
-
         '''------------------------------------------------------------
                                 Setting of Sizers
         ------------------------------------------------------------'''
@@ -86,10 +80,11 @@ class formPanel(wx.Panel):
         App_sizer.Add(sec_4_sizer,1,wx.ALL | wx.EXPAND,5)
         App_sizer.Add(self.section_line_separator[4],0,wx.ALL | wx.EXPAND,5)
         App_sizer.Add(submitsection,1,wx.ALL | wx.EXPAND,5)
-        App_sizer.Add(ScrBar_sizer,1,wx.ALL | wx.EXPAND,5)
 
         self.SetSizer(App_sizer)
-        
+
+        self.SetupScrolling()
+
         '''------------------------------------------------------------
                                 Binding of Widgets
         ------------------------------------------------------------'''
@@ -101,14 +96,14 @@ class formPanel(wx.Panel):
     '''
         ---------- SECTION METHODS ------------
     '''
-    def section_0(self,clients):
+    def section_0(self,labels):
         sec_0_objs = list()
         #Crate Label for clients
-        sec_0_objs.append(self.InserLabel("Client   ",(50,15)))
+        sec_0_objs.append(self.InserLabel(labels[0],(50,15)))
         #Create Choice Widget
-        sec_0_objs.append(self.InsertChoices(clients))
+        sec_0_objs.append(self.InsertChoices(labels[1]))
         #Create Button for new Client
-        sec_0_objs.append(self.InsertButton("New Client"))
+        sec_0_objs.append(self.InsertButton(labels[2]))
 
         return sec_0_objs
 
@@ -120,7 +115,7 @@ class formPanel(wx.Panel):
 
         #Populate Section 1
         for item in fields:
-            label = self.InserLabel(item[1],(100,15)) #LABEL
+            label = self.InserLabel(item,(100,15)) #LABEL
             text = self.InsertText()         #TEXT-CTL
 
             sec_1_objs.append( [label, text] )
@@ -144,19 +139,19 @@ class formPanel(wx.Panel):
     def section_3(self,labels):
         sec_3_objs = list()
         #Crater Sub-Title Section
-        sec_3_objs.append(self.InserLabel("PROFILES SELECTION"))
+        sec_3_objs.append(self.InserLabel(labels[0]))
         #Label for Paper CHOICES
-        sec_3_objs.append(self.InserLabel("Paper",(50,15)))
+        sec_3_objs.append(self.InserLabel(labels[1],(50,15)))
         #Create Choices for PAPER profile widget.
-        sec_3_objs.append(self.InsertChoices(labels[0]))
+        sec_3_objs.append(self.InsertChoices(labels[2]))
         #Insert Button to check out profile specs.
-        sec_3_objs.append(self.InsertButton("See Profile"))
+        sec_3_objs.append(self.InsertButton(labels[3]))
         #Label for Printer CHOICES
-        sec_3_objs.append(self.InserLabel("Printer",(50,15)))
+        sec_3_objs.append(self.InserLabel(labels[4],(50,15)))
         #Create Choices for PRINTER profile widget.
-        sec_3_objs.append(self.InsertChoices(labels[1]))
+        sec_3_objs.append(self.InsertChoices(labels[5]))
         #Insert Button to check out profile specs.
-        sec_3_objs.append(self.InsertButton("See Profile"))
+        sec_3_objs.append(self.InsertButton(labels[6]))
 
         return sec_3_objs
 
@@ -171,16 +166,16 @@ class formPanel(wx.Panel):
         sec_4_2_objs = list()
 
         #Create Title Section
-        sec_4_obj.append(self.InserLabel("Extras"))
+        sec_4_obj.append(self.InserLabel(labels[0]))
 
         ''' Section 4.1'''
         #Title
-        sec_4_1_objs.append(self.InserLabel("Binding"))
+        sec_4_1_objs.append(self.InserLabel(labels[1]))
         #Choice Options
-        sec_4_1_objs.append(self.InsertChoices(labels[0]))
+        sec_4_1_objs.append(self.InsertChoices(labels[2]))
         ''' Section 4.2'''
         #Title
-        sec_4_2_objs.append(self.InserLabel(labels[1]))
+        sec_4_2_objs.append(self.InserLabel(labels[3]))
         #Spin Ctl Option
         sec_4_2_objs.append(self.InsertSpinControlDouble("0"))
 
@@ -252,6 +247,7 @@ class formPanel(wx.Panel):
         section_2.Add(self.sec_2_widgets[0],0,wx.ALL,5)
 
         #Sub-Section2.2 - Buttons
+        print()
         for i in range(len(self.sec_2_widgets)):
             #THIS COULD BE CODED IN A BETTER WAY WITH ARRAY SLICING | TRY TO FIX!!
             if(i == 0):
@@ -366,10 +362,10 @@ class formPanel(wx.Panel):
 
         #Collect Text Fields
         for item in range(len(self.sec_1_widgets)):
-            #sec_1_labels -> [ [db_field,wx label], [], [] ]
-            if self.sec_1_labels[item][0] not in DATA:
+            #sec_1_labels -> [ wxlabel, , ]
+            if self.sec_1_labels[item] not in DATA:
                 #DATA[LABEL]=VALUE
-                DATA[self.sec_1_labels[item][0]] = self.sec_1_widgets[item][1].GetLineText(0)
+                DATA[self.sec_1_labels[item]] = self.sec_1_widgets[item][1].GetLineText(0)
 
         #Collect Siding. Siding will be stored in a list form.
         if(self.sec_2_widgets[1].GetValue() == True):
@@ -378,10 +374,10 @@ class formPanel(wx.Panel):
             DATA['Siding'] = 2
 
         #Collect type of Paper, Paper choice widget with index 2
-        DATA["TypePaper"] = self.sec_3_widgets[2].GetString(self.sec_3_widgets[2].GetSelection())
+        DATA["Paper"] = self.sec_3_widgets[2].GetString(self.sec_3_widgets[2].GetSelection())
 
         #Collect type of Printer, Printer choice widget with index 5
-        DATA["TypePrinter"] = self.sec_3_widgets[5].GetString(self.sec_3_widgets[5].GetSelection())
+        DATA["Printer"] = self.sec_3_widgets[5].GetString(self.sec_3_widgets[5].GetSelection())
 
         #Collect type of Spiral Binding | wx.Choice widget with index [1][1]
         DATA["Coil"] = self.sec_4_widgets[1][1].GetString(self.sec_4_widgets[1][1].GetSelection())
