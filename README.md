@@ -9,7 +9,7 @@ Nuvo Job Register (NJR) is a desktop application built to facilitate a Print-Pro
 NJR is built using:
 
 -  Python3, wxPython 4.1 (Phoenix Version)
--  Json
+-  JSON
 - SQLite
 
 ------
@@ -26,9 +26,59 @@ NJR is built using:
 
 ------
 
-### Documentation
+### Structure
 
-NJR is organized 
+![](https://raw.githubusercontent.com/Andres-CS/Nuvo-Client-Logger/AppStructure/Media/FolderStructure.PNG)
+
+
+
+This project is organized in the following way:
+
+- **Root directory**:
+
+  In it you will find the projects main file, APP.py, which initializes our program by performing a few checks and setups.
+
+- **Client directory**:
+
+  Contains modules that handles client management. 
+
+- **Database directory**:
+
+  Is a package that controls our database. It performs database checks and setups as well as CRUD operations. 
+
+- **GUI directory**:
+
+  This package take care of the entire User Interface.
+
+  - **Form Panel**:
+
+    Handles all related widgets and actions for our input form. 
+
+    This panel is the first panel a user sees when the application is running.
+
+    - **Dialogs**:
+
+      This folders holds all pop-dialogs related to the Form Panel. These will show when data is missing or some action taken may harm the data inputted. 
+
+  - **Records Panel**:
+
+    Its main purpose is to display all stored jobs in the current database.
+
+    It also allows users to search for a specific job according to a set of menus provided.
+
+  - **ConfigGUI**:
+
+    This folder holds JSON files which describe a panels widget organization. 
+
+    These files are used at application start-up to render the application widget layout. 
+
+- **Media:**
+
+  This folder holds static media such as logos and images for UI use.
+
+- **Profiles:**
+
+  This package takes care of managing a resources (printers, type of paper, inks, etc) profile.
 
 ------
 
@@ -122,6 +172,8 @@ Reach out to me at one of the following places!
 ------
 
 ### Future Goals
+
+- Integrate [PyInstaller](https://pyinstaller.readthedocs.io/en/stable/#) for executable creation.
 
 
 
