@@ -8,7 +8,8 @@ Nuvo Job Register (NJR) is a desktop application built to facilitate a Print-Pro
 
 NJR is built using:
 
--  Python3, wxPython 4.1 (Phoenix Version)
+-  Python3, 
+- wxPython 4.1 (Phoenix Version)
 -  JSON
 - SQLite
 
