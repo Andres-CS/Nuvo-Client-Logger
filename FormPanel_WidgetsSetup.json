@@ -65,7 +65,7 @@
         },
 
         "3":{
-            "Copies":{
+            "Number of Copies":{
                 "widget":"Label",
                 "callFunction":false,
                 "functionName":null
@@ -78,7 +78,7 @@
         },
 
         "4":{
-            "Pages":{
+            "Number of Pages":{
                 "widget":"Label",
                 "callFunction":false,
                 "functionName":null
@@ -90,7 +90,7 @@
             }
         },
         "5":{
-            "Printers":{
+            "Number of Printers":{
                 "widget":"Label",
                 "callFunction":false,
                 "functionName":null
