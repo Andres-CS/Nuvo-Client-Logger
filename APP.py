@@ -8,7 +8,7 @@ from GUI.GuiSetUp import Labels_for_UserForm
 from GUI.GuiSetUp import R_sec_0, R_sec_1, R_sec_2, R_sec_3
 
 '''ApplicationClc, MainFrameGui: modules used for creation of skeleton for window app.'''
-from GUI.Application import Paper_Calculator
+from GUI.Application import JobRegister
 from GUI.MainFrameGui import mainFrame
 
 '''SideNavegation: moduel used to create left-align tab menu for panel navegation.'''
@@ -27,7 +27,7 @@ def main():
     DB_Setup()
 
     #Create Application Obj
-    application = Paper_Calculator()
+    application = JobRegister()
 
     #Create Window Frame
     Main_Window_frame = mainFrame(None)

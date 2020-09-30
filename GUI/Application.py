@@ -2,7 +2,7 @@
 
 import wx
 
-class Paper_Calculator(wx.App):
+class JobRegister(wx.App):
     def OnInit(self):
         pass
         return True
