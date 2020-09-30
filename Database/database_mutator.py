@@ -46,7 +46,12 @@ class DB_Mutator(DB_Connector):
 
         query += into + values+";"
 
-        print(query)
+        #FOR APP LOGS PURPOSE
+        print("**************************************")
+        print("Database_Mutator.py -> Add_New_Row()")
+        stm = "SQL Query: " + query
+        print(stm)
+        print("**************************************")
 
         self.Doer.execute(query)
         self.Conn.commit()
