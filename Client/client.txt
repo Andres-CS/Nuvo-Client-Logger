@@ -1,21 +1,6 @@
-Credit Suisse
-JP Morgan
-Morgan Stanley
-DF King
-Goldman Sachs
-Wells Fargo
-UBS
-Freddie Mac
-Citigroup
-Deutsche Bank
-Houser & Allison
-Bank of America
-itBit
-TCI Fund Mgt Limited
-DANIELA
-TESTINTEST
-oiu
-matt
-Datadog
-dfsdfs
-Andres
+Bank_1
+Bank_2
+InvestmentFirm_1
+InvestmentFirm_2
+Individual_1
+Individual_2
