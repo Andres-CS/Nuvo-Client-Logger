@@ -16,11 +16,11 @@ NJR is built using:
 
 ### Visual
 
-<img src="https://raw.githubusercontent.com/Andres-CS/Nuvo-Client-Logger/AppStructure/Media/_DEMO_/Latest_1.PNG" style="zoom: 50%;" />
+<img src="https://raw.githubusercontent.com/Andres-CS/Nuvo-Client-Logger/AppStructure/Media/_DEMO_/Latest_1.PNG" style="zoom: 33%;" />
 
 
 
-<img src="https://raw.githubusercontent.com/Andres-CS/Nuvo-Client-Logger/AppStructure/Media/_DEMO_/Latest_2.PNG" style="zoom: 50%;" />
+<img src="https://raw.githubusercontent.com/Andres-CS/Nuvo-Client-Logger/AppStructure/Media/_DEMO_/Latest_2.PNG" style="zoom: 33%;" />
 
 
 
