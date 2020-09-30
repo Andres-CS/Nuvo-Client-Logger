@@ -19,9 +19,12 @@ def database_exits(filename):
     if '.db' not in fn[len(fn)-3:len(fn)]:
         fn=fn+".db"
     fn = os.path.join(os.path.dirname(__file__),fn)
-    print(fn)
-    print(os.path.isfile(fn))
     print("**************************************")
+    print("Database_Setup.py -> Database_Exists()")
+    stm = "Is database in path: " + fn + " ----> " + str(os.path.isfile(fn))
+    print(stm)
+    print("**************************************")
+    
     return os.path.isfile(fn)
 
 
@@ -60,14 +63,18 @@ def DB_Setup():
     
     #Check DB warning level
     if(specs["warning"]["level"] < 4):
+        print("**************************************")
+        print("Database_Setup.py -> DB_Setup()")
+        stm = "Database warning level: " + str(specs["warning"]["level"]) + "\n" + str(specs["warning"][str(specs["warning"]["level"])])
+        print(stm)
+        print("**************************************")
         tmp_data["warning_level"] = specs["warning"]["level"]
-        #print(specs["warning"][str(specs["warning"]["level"])])  --- THIS PRINT THE WARNING TXT
     else:
         '''
         IF THE WARNING LEVEL IS >4 THEN A NEW DB FILE HAS TO BE CREATED.
         THE DB TO BE CREATED IS THE ONE WITH THE NEXT CONSECITVY POST-FIX.
 
-        THIS NEEDS TO BE CODED.
+        THIS NEEDS TO BE ADJUSTED!.
         '''
         print(specs["warning"]["level"])
     
