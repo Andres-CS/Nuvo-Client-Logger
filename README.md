@@ -28,7 +28,7 @@ NJR is built using:
 
 ### Documentation
 
-
+NJR is organized 
 
 ------
 
