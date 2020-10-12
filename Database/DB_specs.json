@@ -1,16 +1,114 @@
 {
-	"Database_1" : 
+	"database" : 
 	{
 		"warning_level" : 1,
 		"db_name": "Database_1.db",
 		"db_tables": 
 		{
-			"table_1":
-			{
-				"tabel_name": "table_1",
-				"fields_name" : ["client","job_id","job_name","number_of_copies","number_of_pages","siding","paper", "printer","type_of_book","number_sheets","number_cartons","coil", "coil_size","number_of_printers","inserts","time_printing","number_rims","number_sheet_per_book"],
-				"fields_type" : ["TEXT","REAL","TEXT","REAL","REAL","REAL","TEXT", "TEXT","TEXT","REAL","REAL","TEXT","TEXT","REAL","REAL","TEXT","REAL","REAL"]
-			}
+			"client_table":{
+                "tabel_name": "table_1",
+                "fields":{
+                    "id":"INTEGER",
+                    "client":"TEXT"
+                },
+                "pk":{
+                    "exist":true,
+                    "fields":["id"],
+                    "reference":false
+                },
+                "fk":{
+                    "exist":false
+                }
+            },
+            
+            "job_table":{
+                "table_name":"job_table",
+                "fields":{
+                    "id":"INTEGER",
+                    "client_id":"INTEGER",
+                    "job_id": "INTEGER",
+                    "job_name": "TEXT",
+                    "contact": "TEXT"
+                },
+                "pk":{
+                    "exist":true,
+                    "fields":["id"],
+                    "reference":false
+                },
+                "fk":{
+                    "exist":true,
+                    "fields":["client_id"],
+                    "reference":"client_table",
+                    "reference_fields":["id"]
+                }
+            },
+
+            "PrelimPrint_table":{
+                "table_name": "prelimprint_table",
+                "fields":{
+                    "id": "INTEGER",
+                    "job_id": "INTEGER",
+                    "type_of_book": "TEXT",
+                    "number_of_copies": "REAL",
+                    "number_of_pages":"REAL",
+                    "number_sheet_per_book":"REAL",
+                    "siding":"REAL",
+                    "paper":"TEXT",
+                    "printer":"TEXT",
+                    "number_of_printers":"REAL",
+                    "number_sheets":"REAL",
+                    "number_cartons":"REAL",
+                    "number_rims":"REAL",
+                    "coil":"TEXT",
+                    "coil_size":"TEXT",
+                    "inserts":"REAL",
+                    "time_printing":"TEXT"
+                },
+                "pk":{
+                    "exist":true,
+                    "fields":["id"],
+                    "reference":false
+                },
+                "fk":{
+                    "exist":true,
+                    "fields":["job_id"],
+                    "reference":"job_table",
+                    "reference_fields":["job_id"]
+                }
+            },
+
+            "FinalPrint_table":{
+                "fields":{
+                    "id": "INTEGER",
+                    "job_id": "INTEGER",
+                    "type_of_book": "TEXT",
+                    "number_of_copies": "REAL",
+                    "number_of_pages":"REAL",
+                    "number_sheet_per_book":"REAL",
+                    "siding":"REAL",
+                    "paper":"TEXT",
+                    "printer":"TEXT",
+                    "number_of_printers":"REAL",
+                    "number_sheets":"REAL",
+                    "number_cartons":"REAL",
+                    "number_rims":"REAL",
+                    "coil":"TEXT",
+                    "coil_size":"TEXT",
+                    "inserts":"REAL",
+                    "time_printing":"TEXT"
+                },
+                "pk":{
+                    "exist":true,
+                    "fields":["id"],
+                    "reference":false
+                },
+                "fk":{
+                    "exist":true,
+                    "fields":["job_id"],
+                    "reference":"job_table",
+                    "reference_fields":["job_id"]
+                }
+            }
 		}
 	}
 }
