@@ -6,23 +6,28 @@ class DB_Creator:
     '''
     __init__() -  Class constructor.
     Parameters:
-        database (string)
-        db_specs
-    Accepts a string which will become the Database file.
+        DB (JSON object)
+    Accepts a JSON object which will has the Database specs.
     Creates the connector object and the cursor object.
     Saves changes to database file.
     '''
-    def __init__(self, database, db_specs):
-        #Create Database
-        self.Conn = self._DB_Connector(database) 
-        self.Doer = self.Conn.cursor()
-        self.Conn.commit()
+    def __init__(self, DB):
+        database = DB
+        # 1) Create Database
+        try:
+            self.Conn = self._DB_Connector(database["database"]["db_name"]) 
+            self.Doer = self.Conn.cursor()
+            self.Conn.commit()
+        except sqlite3.Error as er:
+            print("Something Happend While Creating the Database:")
+            print(er)
         
-        #DB_Config Data
-        self.db_config_data = db_specs
-
-        #Create table(s) 
-        self._Create_table()
+        #2 Create Database Tables
+        try:
+            self._Create_table(database["database"]["db_tables"])
+        except sqlite3.Error as er:
+            print("Something Happend while creating the Database's tables")
+            print(er)
 
         #Exit DB
         self.Conn.close()
@@ -46,36 +51,106 @@ class DB_Creator:
     Parameters:
         filename (string)
     Accepts a string and parses it for proper file extention.
+    It checks if the database file to be created has ".db" as its extention.
     '''
     def _File_Inspector(self, filename):
         if '.db' in filename[len(filename)-3:len(filename)]:
             return True
         return False	
+
 #-----------------------------------------------------------------------------------------------
+    ''' 
+    _Get_pf_keys() -  method
+    Parameters:
+        typeKey (String)
+        keys    (JSON object)
+    Accepts a STRING which specifies the type of key to be retrive and a JSON object 
+    representation of the PRIMARY and FOREIGN keys to be assigned.
+    Parses each object and creates a SQL stament with its respected KEY fields.
+    '''
+    def _Get_pf_key(self,typeKey,keys):
+        sql = list()
+        sql.append(f"{typeKey} KEY")
 
-    def _Create_table(self):
+        kys = "("
+        rfs = "("
 
-        #Table Vars
-        db_instruction = "CREATE TABLE "
-        table_name = self.db_config_data["db_tables"]["table_1"]["tabel_name"]
-        table_fields = self.db_config_data["db_tables"]["table_1"]["fields_name"]
-        table_fields_type = self.db_config_data["db_tables"]["table_1"]["fields_type"]
+        #Check Keys exits
+        if keys["exist"]:
+            #Get the fields to be keys
+            for fl in keys["fields"]:
+                kys = kys + fl + ", "
+            #Remove trailing comma
+            kys = kys[:-2]
+            kys = kys + ")"
+            sql.append(kys)
+            #Check if keys are based on a external table
+            if keys["reference"]:
+                rf_table = keys["reference"]
+                sql.append(f"REFERENCES {rf_table}")
+                #Get the fields from external table
+                for rf in keys["reference_fields"]:
+                    rfs = rfs + rf +", "
+                #Remove trailing comma
+                rfs = rfs[:-2]
+                rfs = rfs + ")"
+                sql.append(rfs)
+        else:
+            return None
+        #Merge/Join SQL statement
+        sql = " ".join(sql)
+        print(sql)
+        return sql
 
+#-----------------------------------------------------------------------------------------------
+    ''' 
+    _Create_table() -  method
+    Parameters:
+        tables (JSON object)
+    Accepts a JSON object representation of the tables to be created 
+    Parses each object and creates a table with its respected field.
+    '''
+    def _Create_table(self, tables):
+
+        sql = list()
+        
         #Create SQL statement
-        db_instruction =  db_instruction+table_name+" ( "
+        for name in tables:
+            # --- Part 1 ---
+            sql.append(f"CREATE TABLE IF NOT EXISTS {name} (")
+            # --- Part 2 ---
+            vls = " "
+            for fieldName in tables[name]["fields"]:
+                vls = vls + fieldName + " " + tables[name]["fields"][fieldName] + ", "
+            
+            # --- Part 3 ---
+            #Check for PRIMARY KEYs
+            if tables[name]["pk"]["exist"]:
+                vls = vls +  self._Get_pf_key("PRIMARY",tables[name]["pk"]) 
+                vls = vls + ", "
+            
+            # --- Part 4 ---
+             #Check for FOREIGN KEYs
+            if tables[name]["fk"]["exist"]:
+                vls = vls + self._Get_pf_key("FOREIGN",tables[name]["fk"])
+                #vls = vls + ", "
 
-        for x in range(len(table_fields)):
-            db_instruction = db_instruction +table_fields[x]+" "+table_fields_type[x]
-            if(x != len(table_fields)-1 ):
-                db_instruction += ", "
+            #Remove coma from last field
+            sql.append(vls[:-2])
 
-        db_instruction += ");"
+            # --- Part 5 ---
+            sql.append(");")
 
-        print(db_instruction)
-
-        #Execute query
-        self.Doer.execute(db_instruction)
-
+            #Merged query
+            sql = " ".join(sql)
+            
+            print(sql)
+            print("-----------------------------")
+            #Execute query
+            self.Doer.execute(sql)
+            
+            sql = []
+        
         #Save action in DB
         self.Conn.commit()
 
