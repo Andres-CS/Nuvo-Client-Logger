@@ -7,6 +7,9 @@ _DATABASE = "Database"
 _CONFGFILE = "DBs_App.json"
 _STORAGE = "Storage"
 
+
+# -------- LOW LEVEL METHODS -------- 
+
 # 1. Check DB to be used.
 '''
     In the APP'S ROOT FOLDER look for the Database FOLDER
@@ -64,7 +67,6 @@ def _set_DB_size_warning():
         print("DB Level: ", end=" ")
         print(_DBCONFIG["warning"]["level"])
 
-
 # 4. Update DBs_App.json file
 def _update_DB_Config_File():
     os.chdir( os.path.join( os.path.dirname(__file__), _DATABASE) )
@@ -73,6 +75,9 @@ def _update_DB_Config_File():
         with open(_CONFGFILE, 'w') as config:
             json.dump(_DBCONFIG,config)
         config.close()
+
+
+# -------- MID LEVEL METHODS -------- 
 
 
 def _DB_Setup():
@@ -91,6 +96,9 @@ def _DB_Setup():
     os.chdir("..")
 
 
+# -------- TOP LEVEL METHODS -------- 
+
+
 def setUp():
     _DB_Setup()
     print(os.getcwd())
@@ -98,5 +106,3 @@ def setUp():
 
 
 # --- RUN SETUP SCRIPT --- 
-
-setUp()
