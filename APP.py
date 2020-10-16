@@ -2,6 +2,7 @@ import wx
 
 '''Databse Setup'''
 from Database.Database_Setup import DB_Setup
+from AppSetup import setUp
 
 '''GuiSetUp: reads config files for the panels'''
 from GUI.GuiSetUp import Labels_for_UserForm
@@ -24,7 +25,8 @@ from GUI.RecordsPanel.RecordPanelGui import recordPanel
 
 def main():
     #Database Setup
-    DB_Setup()
+    #DB_Setup()
+    setUp()
 
     #Create Application Obj
     application = JobRegister()

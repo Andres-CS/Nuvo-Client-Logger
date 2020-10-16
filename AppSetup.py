@@ -7,7 +7,6 @@ _DATABASE = "Database"
 _CONFGFILE = "DBs_App.json"
 _STORAGE = "Storage"
 
-
 # 1. Check DB to be used.
 '''
     In the APP'S ROOT FOLDER look for the Database FOLDER
@@ -62,7 +61,7 @@ def _set_DB_size_warning():
             _DBCONFIG["warning"]["level"] = 4
         else:
             print("NEED TO CHANGE/CREATE A NEW DB - EXCEDED LIMITS")
-        print("DB size: ", end=" ")
+        print("DB Level: ", end=" ")
         print(_DBCONFIG["warning"]["level"])
 
 
@@ -71,23 +70,33 @@ def _update_DB_Config_File():
     os.chdir( os.path.join( os.path.dirname(__file__), _DATABASE) )
     #Check we are in DATABASE folder
     if _DATABASE == os.getcwd()[-len(_DATABASE):]:
-        print(os.getcwd())
         with open(_CONFGFILE, 'w') as config:
             json.dump(_DBCONFIG,config)
         config.close()
 
 
-# --- RUN SETUP SCRIPT --- 
-
-_DBCONFIG = _get_DB_Config()
-#Go to App's ROOT folder
-os.chdir("..")
-if(_get_DB_exists()):
+def _DB_Setup():
+    global _DBCONFIG 
+    _DBCONFIG = _get_DB_Config()
     #Go to App's ROOT folder
     os.chdir("..")
-    _set_DB_size_warning()
-#Go to App's ROOT folder
-os.chdir("..")
-_update_DB_Config_File()
-#Go to App's ROOT folder
-os.chdir("..")
+    if(_get_DB_exists()):
+        #Go to App's ROOT folder
+        os.chdir("..")
+        _set_DB_size_warning()
+    #Go to App's ROOT folder
+    os.chdir("..")
+    _update_DB_Config_File()
+    #Go to App's ROOT folder
+    os.chdir("..")
+
+
+def setUp():
+    _DB_Setup()
+    print(os.getcwd())
+
+
+
+# --- RUN SETUP SCRIPT --- 
+
+setUp()
