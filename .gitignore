@@ -1,1 +1,8 @@
 __pycache__/
+/Client/test.py 
+/Database/test.py
+/GUI/test.py
+/Profile/test.py
+/Media/test.py
+/Storage/test.py
+test.py
