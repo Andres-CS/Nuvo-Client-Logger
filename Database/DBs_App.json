@@ -1,13 +1,1 @@
-{
-    "specs_file": "DB_specs.json",
-    "current_db": "Database_1",
-    "warning": 
-    {
-        "level" : 1,
-        "1" : "Database is at capacity < 25%",
-        "2" : "Database is at capacity < 50%",
-        "3" : "Database is at capacity < 75%",
-        "4" : "Database is at capacity < 95%"
-    },
-    "Database_1": "Database_1.db"
-}
+{"specs_file": "DB_specs.json", "current_db": "Database_1", "maxsize": 1000000, "currentsize": 20480, "warning": {"level": 1, "1": 0.25, "2": 0.5, "3": 0.75, "4": 0.95}, "Database_1": "Database_1.db"}

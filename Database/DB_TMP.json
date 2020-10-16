@@ -1,1 +1,5 @@
-{"specs_file": "DB_specs.json", "warning_level": 1, "db_name": "Database_1"}
+{
+    "specs_file": "DB_specs.json", 
+    "warning_level": 1, 
+    "db_name": "Database_1"
+}
