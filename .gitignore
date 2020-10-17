@@ -1,6 +1,7 @@
 __pycache__/
 /Client/test.py 
 /Database/test.py
+/Database/TEMP/*
 /GUI/test.py
 /Profile/test.py
 /Media/test.py
