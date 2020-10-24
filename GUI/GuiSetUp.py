@@ -72,7 +72,7 @@ def get_label_settings(listofprofiles):
 see_profile = "See Profile"
 
 #Get Widgets Set
-spec_file_GUI = os.path.join(os.path.dirname(__file__),"configGUI/FormPanel_WidgetsSetup.json")
+spec_file_GUI = os.path.join(os.path.dirname(__file__),"_CONFIG/FormPanel_WidgetsSetup.json")
 
 with open(spec_file_GUI) as config:
     gui_File = json.load(config)

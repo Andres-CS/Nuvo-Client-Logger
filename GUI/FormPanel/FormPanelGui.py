@@ -354,6 +354,9 @@ class formPanel(scrolled.ScrolledPanel):
         '''
             Please keep in mind that the keys for dict DATA, must match DB fields.
         '''
+        #FOR TEST
+        print(" - COLLECTING DATA - ")
+
         #Data inputed or selected by the user.
         DATA = dict()
 
@@ -385,6 +388,14 @@ class formPanel(scrolled.ScrolledPanel):
         #Collect Inserts | wx.SpinControlDouble widget with indec [2][1]
         DATA["Inserts"] = self.sec_4_widgets[2][1].GetValue()
 
+        
+        
+        #FOR TEST
+        for k in DATA:
+            print(k,end=": ")
+            print(DATA[k])
+
+
 
         return DATA
     
@@ -413,9 +424,14 @@ class formPanel(scrolled.ScrolledPanel):
 
     #Submitt Button Handler
     def onClick_Submitt_Button(self,event):
+
+        PAYLOAD = {
+            "CRUD":"CREATE",
+            "PAYLOAD": dict()
+        }
         #User DATA and RESULTS
         userData = dict()
-        resultsData = dict()
+        resultData = dict()
 
         #Check there is no missing DATA
         if(form_missingdata(self.sec_0_widgets,self.sec_1_widgets,self.sec_2_widgets,self.sec_3_widgets,self.sec_4_widgets) == True):
@@ -423,12 +439,17 @@ class formPanel(scrolled.ScrolledPanel):
         else:
             #Collect data entered by user
             userData = self.form_collect_user_data()
-
             userDATA = form_correctDataType(userData)
+
+            PAYLOAD["PAYLOAD"]["userData"] = userDATA
 
             #Test data' dataype
             if(form_checkDatatype(userData) == True):
-                resultsData = ALU(userData)
-                result_Dialog(userData,resultsData)
+                resultData = ALU(userData)
+                PAYLOAD["PAYLOAD"]["resultData"]= resultData
+
+                #SEND TO RESULT DIALOG
+                result_Dialog(PAYLOAD)
+
             else:
                 wx.MessageDialog(self,"PLEASE INSERT\nTHE CORRECT DATATYPE.","WARNING", wx.OK | wx.ICON_EXCLAMATION).ShowModal()

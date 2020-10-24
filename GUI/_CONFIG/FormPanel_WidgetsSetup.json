@@ -3,7 +3,7 @@
     "1":{
         "0":{
             
-            "Clients":{
+            "Client":{
                 "widget":"Label",
                 "callFunction":false,
                 "functionName":null

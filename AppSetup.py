@@ -6,26 +6,31 @@ import json
 _DATABASE = "Database"
 _CONFGFILE = "DBs_App.json"
 _STORAGE = "Storage"
+_CONFIG = "_CONFIG"
 
 
 # -------- LOW LEVEL METHODS -------- 
 
 # 1. Check DB to be used.
 '''
-    In the APP'S ROOT FOLDER look for the Database FOLDER
-    In Database FOLDER look for DBs_App.json FILE
+    In the APP'S ROOT FOLDER look for the Database\_CONFIG\ FOLDER
+    In _CONFIG FOLDER look for DBs_App.json FILE
     Load DBs_App.json FILE
 '''
 def _get_DB_Config():
     if os.path.exists(_DATABASE):
-        #Change dirs
+        #Change dirs to Database\
         os.chdir( os.path.join( os.path.dirname(__file__), _DATABASE) )
+        if os.path.exists(_CONFIG):
+            #Change dirs to Database\_CONFIG
+            os.chdir(_CONFIG)
         if os.path.exists(_CONFGFILE):
             #Load File data
             with open(_CONFGFILE, 'r') as config:
                 dbconfig = json.load(config)
-                #print(db)
             config.close()
+        #GO BACK TO _DATABASE FOLDER
+        os.chdir("..")
     return dbconfig
 
 # 2. Check DB exists in _STORAGE Folder 
@@ -69,12 +74,17 @@ def _set_DB_size_warning():
 
 # 4. Update DBs_App.json file
 def _update_DB_Config_File():
+    #Change dirs to Database
     os.chdir( os.path.join( os.path.dirname(__file__), _DATABASE) )
+    #Change dirs to Database\_CONFIG
+    os.chdir(_CONFIG)
     #Check we are in DATABASE folder
-    if _DATABASE == os.getcwd()[-len(_DATABASE):]:
+    if _CONFIG == os.getcwd()[-len(_CONFIG):]:
         with open(_CONFGFILE, 'w') as config:
             json.dump(_DBCONFIG,config)
         config.close()
+    #GO BACK TO _DATABASE FOLDER
+    os.chdir("..")
 
 
 # -------- MID LEVEL METHODS -------- 

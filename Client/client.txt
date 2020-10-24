@@ -1,5 +1,6 @@
 Bank_1
 Bank_2
+Bank_3
 InvestmentFirm_1
 InvestmentFirm_2
 Individual_1

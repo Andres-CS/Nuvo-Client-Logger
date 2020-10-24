@@ -42,11 +42,11 @@ def main():
     Form_panel = formPanel(Left_Menu_Tabs, Labels_for_UserForm)
 
     #Create Record Panel
-    Record_panel = recordPanel(Left_Menu_Tabs, R_sec_0, R_sec_1, R_sec_2, R_sec_3)
+    #Record_panel = recordPanel(Left_Menu_Tabs, R_sec_0, R_sec_1, R_sec_2, R_sec_3)
 
     #Add Tabs to Tab Menu(in other words, the panels)
     Left_Menu_Tabs.AddPage(Form_panel,"Form")
-    Left_Menu_Tabs.AddPage(Record_panel,"Records")
+    #Left_Menu_Tabs.AddPage(Record_panel,"Records")
 
     #Sizer for Tabs
     TabSizer = wx.BoxSizer()

@@ -8,7 +8,7 @@ from App_DB_Bridge import send2DB
     ---------- RESULT DIALOG ------------
 '''
 class resultDialog(wx.Dialog):
-    def __init__(self,userData, resultData):
+    def __init__(self,PAYLOAD):
         super(resultDialog,self).__init__(None,wx.ID_ANY,"Results")
 
         #labels
@@ -23,7 +23,7 @@ class resultDialog(wx.Dialog):
         dg_bx_sizer = wx.BoxSizer(wx.VERTICAL)
 
         #Setting up data to be display for dialog.
-        self.data_to_display, self.num_labels = self.prepare_labels(userData, resultData)
+        self.data_to_display, self.num_labels = self.prepare_labels(PAYLOAD["PAYLOAD"]["userData"], PAYLOAD["PAYLOAD"]["resultData"])
 
         #Create Widgets
         for i in range(self.num_labels):
@@ -34,19 +34,13 @@ class resultDialog(wx.Dialog):
             dg_bx_sizer.Add(st_widgets[ii],0,wx.ALL,0)
         
         #Create "Save Data" Radio Button
-        #SaveDataRadioButton = wx.RadioButton(self,wx.ID_ANY,label="SAVE DATA?")
+        SaveDataRadioButton = wx.RadioButton(self,wx.ID_ANY,label="SAVE DATA?")
 
         #Add it to the BoxSizer
-        #dg_bx_sizer.Add(SaveDataRadioButton,0,wx.ALL,3)
+        dg_bx_sizer.Add(SaveDataRadioButton,0,wx.ALL,3)
 
         '''MAKE BOX TO SAVE THAT by USER CHOICE'''
-        send2DB(userData, resultData)
-
-        result_dg_panel.SetSizer(dg_bx_sizer)
-
-
-
-
+        #send2DB(PAYLOAD)
 
     def prepare_labels(self,userData,resultData):
         dg_labels=list()
@@ -78,7 +72,7 @@ class resultDialog(wx.Dialog):
     ----------- RUN RESULT DIALOG ------------
 '''
 
-def result_Dialog(userData, resultData):
-    RtDlg = resultDialog(userData,resultData)
+def result_Dialog(PAYLOAD):
+    RtDlg = resultDialog(PAYLOAD)
     RtDlg.ShowModal()
     RtDlg.Destroy()

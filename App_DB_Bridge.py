@@ -89,7 +89,7 @@ send2DB()
     *This functions calls all the other necesary functions that analyze the data provided by the forms to make them DB compatible.
     *As a last step it opens the DB connection and add the data to the DB.
 '''
-def send2DB(user_input, calc_resuts):
+def send2DB(PAYLOAD):
     data = process_data_for_db(user_input,calc_resuts)
 
     #ui_filds, ui_values = get_fields_and_data(ui)
