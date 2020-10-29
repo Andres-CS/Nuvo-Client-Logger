@@ -35,7 +35,9 @@ def FormSections(gui_config,section,rows=0):
                                 ]
                             )
                         break
-                if widget in section_widgets:
+                # THIS IS A QUICK FIX, BUT IT SHOULD BE IMPROVED 
+                # or widget == "TextInput" 
+                if widget in section_widgets or widget == "TextInput":
                     continue
                 else:
                     section_widgets.append(widget)
@@ -79,7 +81,9 @@ with open(spec_file_GUI) as config:
 
 
 F_sec_0 = get_label_settings( FormSections(gui_File,1,1) )
-F_sec_1 = get_label_settings( FormSections(gui_File,2,6) )
+x = FormSections(gui_File,2,6)
+print(x)
+F_sec_1 = get_label_settings( x )
 F_sec_2 = get_label_settings( FormSections(gui_File,3,2) )
 F_sec_3 = get_label_settings( FormSections(gui_File,4,3) )
 F_sec_4 = get_label_settings( FormSections(gui_File,5,3) )
