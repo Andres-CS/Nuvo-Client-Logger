@@ -3,8 +3,6 @@
 import wx
 
 from App_DB_Bridge import databaseBridge as Bridge
-from App_DB_Bridge import send2DB
-
 
 '''
     ---------- RESULT DIALOG ------------

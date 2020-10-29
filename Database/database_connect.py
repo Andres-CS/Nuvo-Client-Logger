@@ -8,9 +8,6 @@ import sqlite3
 import json
 import os
 
-'''
-By default all the DBs specs will be stored here as specify in the READ_ME.txt file of the App.
-'''
 spec_file_db = os.path.join(os.path.dirname(__file__),"DB_specs.json")
 
 
@@ -24,12 +21,11 @@ class DB_Connector:
     Saves changes to database file.
     '''
     def __init__(self, DBName):
-        #Contains the specifications of the Database provided.
-        self.database_specs = self._DB_Specs(DBName)
-
-        self.Conn = self.DB_Connect(self.database_specs["db_name"])
+        #print( os.path.join( os.path.abspath(os.path.join( os.path.dirname(__file__), os.pardir )), "Storage\\"+DBName ) )
+        self.Location_Database = os.path.join( os.path.abspath(os.path.join( os.path.dirname(__file__), os.pardir )), "Storage\\"+DBName )
+        self.Conn = self.DB_Connect(self.Location_Database)
         self.Doer = self.Conn.cursor()
-        self.Conn.commit()       
+        self.Conn.commit()
 
 #-----------------------------------------------------------------------------------------------
     '''
@@ -65,27 +61,3 @@ class DB_Connector:
     def Exit_DB(self):
         self.Conn.close()
 #-----------------------------------------------------------------------------------------------
-    '''
-    DB_Specs() - Method
-    Parameters:
-        database (string)
-    Accepts a database filename and returns the Database Specifications.
-    '''
-    def _DB_Specs(self, database):
-        dbs = dict()
-
-        #Open DB specs file.
-        with open(spec_file_db) as db_spc:
-            #Load DB sepcs file.
-            dbs = json.load(db_spc)
-        #Close DB specs file.
-        db_spc.close()
-
-        #Search for the Specific Database given by the parameter.
-        dbs = dbs[database]
-
-        return dbs
-    
-
-
-
