@@ -2,7 +2,9 @@
 
 import wx
 
+from App_DB_Bridge import databaseBridge as Bridge
 from App_DB_Bridge import send2DB
+
 
 '''
     ---------- RESULT DIALOG ------------
@@ -41,6 +43,10 @@ class resultDialog(wx.Dialog):
 
         '''MAKE BOX TO SAVE THAT by USER CHOICE'''
         #send2DB(PAYLOAD)
+        print('---- TESTING -----')
+        obj = Bridge()
+        obj.send2DB(PAYLOAD)
+
 
     def prepare_labels(self,userData,resultData):
         dg_labels=list()

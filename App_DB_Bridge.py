@@ -3,10 +3,71 @@
 import os
 import json
 
+from Database.database_accessor import DB_Accessor
+from Database.database_mutator import DB_Mutator
 
-'''
---------------------------- BRIDGE TOOLS -------------------------------------------
-'''
+# -------------------------------- BRIDGE TOOLS -------------------------------------
+
+class databaseBridge():
+
+    def __init__(self):
+        print("Bridge Initialized")
+        self.database = self._DatabaseToUse()
+    
+    def _DatabaseToUse(self):
+        #GET DATABASE TO BE USED
+        try:
+            db_file = os.path.join(os.path.dirname(__file__),"Database\_CONFIG\DBs_App.json")
+            with open(db_file, 'r') as dbinfo:
+                info = json.load(dbinfo)
+        except:
+            print("SOMETING HAPPENED WITH EITHER THE DATABASE OR THE CONFIG FILE")
+        
+        return info[info["current_db"]]
+
+    
+    def _Map(self, externalData):
+        data = dict()
+        #GET MAP SCHEMA FILE 
+        try:
+            map_file = os.path.join(os.path.dirname(__file__),"Database\_CONFIG\MapSchema.json")
+            with open(map_file,'r') as map:
+                MapSchema = json.load(map)
+        except:
+            print("SOMETHING HAPPENED WITH THE MAP FILE.")
+        #Map USERDATA
+        for key1 in externalData["userData"]:
+            # --- THIS NEEDS FIXING ON THE GUI SIDE
+            if key1 == "TextInput":
+                print("TextInput Read")
+            else:
+                data[MapSchema[key1]] = externalData["userData"][key1]
+        #MAP RESULTDATA
+        for key2 in externalData["resultData"]:
+            data[MapSchema[key2]] = externalData["resultData"][key2]
+                
+        return data
+    
+
+    def send2DB(self, PAYLOAD):
+        _STATUS = None
+        _RECORD = self._Map(PAYLOAD["PAYLOAD"])
+        #ID CURD'S VALUE
+        if(PAYLOAD["CRUD"] == "CREATE"):
+            print(PAYLOAD["CRUD"])
+        elif(PAYLOAD["CRUD"] == "READ"):
+            print(PAYLOAD["CRUD"])
+        elif(PAYLOAD["CRUD"] == "UPDATE"):
+            print(PAYLOAD["CRUD"])
+        elif(PAYLOAD["CRUD"] == "DELETE"):
+            print(PAYLOAD["CRUD"])
+
+
+
+
+
+# -----------------------------------------------------------------------------------
+
 
 def process_db_header(headers):
     tmp = list()
@@ -90,7 +151,20 @@ send2DB()
     *As a last step it opens the DB connection and add the data to the DB.
 '''
 def send2DB(PAYLOAD):
-    data = process_data_for_db(user_input,calc_resuts)
+    _Status = None
+
+    #ID CURD'S VALUE
+    if(PAYLOAD["CRUD"] == "CREATE"):
+        print(PAYLOAD["CRUD"])
+        _Record = M
+    elif(PAYLOAD["CRUD"] == "READ"):
+        print(PAYLOAD["CRUD"])
+    elif(PAYLOAD["CRUD"] == "UPDATE"):
+        print(PAYLOAD["CRUD"])
+    elif(PAYLOAD["CRUD"] == "DELETE"):
+        print(PAYLOAD["CRUD"])
+
+    '''data = process_data_for_db(user_input,calc_resuts)
 
     #ui_filds, ui_values = get_fields_and_data(ui)
     #cr_filds, cr_values = get_fields_and_data(cr)
@@ -104,6 +178,7 @@ def send2DB(PAYLOAD):
     db_mut.Add_New_Row(data)
     
     db_mut.Exit_DB()
+    '''
 
 
 
