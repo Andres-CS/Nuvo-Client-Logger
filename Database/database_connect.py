@@ -21,7 +21,7 @@ class DB_Connector:
     Saves changes to database file.
     '''
     def __init__(self, DBName):
-        #print( os.path.join( os.path.abspath(os.path.join( os.path.dirname(__file__), os.pardir )), "Storage\\"+DBName ) )
+       #GO TO STORAGE FOLDER
         self.Location_Database = os.path.join( os.path.abspath(os.path.join( os.path.dirname(__file__), os.pardir )), "Storage\\"+DBName )
         self.Conn = self.DB_Connect(self.Location_Database)
         self.Doer = self.Conn.cursor()

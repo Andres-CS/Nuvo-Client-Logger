@@ -81,9 +81,7 @@ with open(spec_file_GUI) as config:
 
 
 F_sec_0 = get_label_settings( FormSections(gui_File,1,1) )
-x = FormSections(gui_File,2,6)
-print(x)
-F_sec_1 = get_label_settings( x )
+F_sec_1 = get_label_settings( FormSections(gui_File,2,6) )
 F_sec_2 = get_label_settings( FormSections(gui_File,3,2) )
 F_sec_3 = get_label_settings( FormSections(gui_File,4,3) )
 F_sec_4 = get_label_settings( FormSections(gui_File,5,3) )
