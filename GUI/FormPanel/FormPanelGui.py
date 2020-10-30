@@ -354,9 +354,6 @@ class formPanel(scrolled.ScrolledPanel):
         '''
             Please keep in mind that the keys for dict DATA, must match DB fields.
         '''
-        #FOR TEST
-        print(" - COLLECTING DATA - ")
-
         #Data inputed or selected by the user.
         DATA = dict()
 
@@ -390,12 +387,8 @@ class formPanel(scrolled.ScrolledPanel):
 
         
         
-        #FOR TEST
-        for k in DATA:
-            print(k,end=": ")
-            print(DATA[k])
-
-
+        print('---- TESTING -----')
+        print("Callecting data inputed by user.")
 
         return DATA
     

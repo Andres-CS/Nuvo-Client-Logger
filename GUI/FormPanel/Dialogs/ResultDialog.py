@@ -40,7 +40,6 @@ class resultDialog(wx.Dialog):
         dg_bx_sizer.Add(SaveDataRadioButton,0,wx.ALL,3)
 
         '''MAKE BOX TO SAVE THAT by USER CHOICE'''
-        #send2DB(PAYLOAD)
         print('---- TESTING -----')
         obj = Bridge()
         obj.send2DB(PAYLOAD)

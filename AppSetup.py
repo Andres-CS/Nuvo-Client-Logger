@@ -111,8 +111,5 @@ def _DB_Setup():
 
 def setUp():
     _DB_Setup()
-    print(os.getcwd())
-
-
 
 # --- RUN SETUP SCRIPT --- 

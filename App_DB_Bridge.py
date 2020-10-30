@@ -46,16 +46,16 @@ class databaseBridge():
             for key2 in externalData["resultData"]:
                 data[MapSchema[key2]] = externalData["resultData"][key2]
         except:
-            print("SOMETHING HAPPENED WITH THE MAP FILE.\DATA COULD NOT BE MAPPED")
+            print("SOMETHING HAPPENED.\nDATA COULD NOT BE MAPPED TO FIELDS")
         
-
         #LASTLY, MAP DATA ACCORDING TO TABLE
         try:
             new_data = dict()
+            
             table_file = os.path.join(os.path.dirname(__file__),"Database\_CONFIG\DB_specs.json")
             with open(table_file,'r') as TableSchema:
                 Tables = json.load(TableSchema)
-            print("\n\n")
+            
             #MAP DATA TO ALL TABLES
             for F in data:
                 for T in Tables["database"]["db_tables"]:
@@ -65,15 +65,15 @@ class databaseBridge():
                         else:
                             new_data[T] = {F:data[F]}
         except:
-            print("SOMETHING HAPPENED WITH THE DATABASE TABLE FILE.\nDATA COULD NOT BE MAPPED")
-
+            print("SOMETHING HAPPENED.\nDATA COULD NOT BE MAPPED TO TABLES")
+        
         return new_data
     
 
     def send2DB(self, PAYLOAD):
         _STATUS = None
         _RECORD = self._Map(PAYLOAD["PAYLOAD"])
-        print(_RECORD)
+        print("Data Has Been Mapped.")
         #ID CURD'S VALUE
         if(PAYLOAD["CRUD"] == "CREATE"):
             print(PAYLOAD["CRUD"])
