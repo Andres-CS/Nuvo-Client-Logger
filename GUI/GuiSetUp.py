@@ -81,13 +81,20 @@ with open(spec_file_GUI) as config:
 
 
 F_sec_0 = get_label_settings( FormSections(gui_File,1,1) )
-F_sec_1 = get_label_settings( FormSections(gui_File,2,6) )
-F_sec_2 = get_label_settings( FormSections(gui_File,3,2) )
-F_sec_3 = get_label_settings( FormSections(gui_File,4,3) )
+F_sec_1 = get_label_settings( FormSections(gui_File,2,2) ) # ADDING TYPE OF PRINTING
+F_sec_2 = get_label_settings( FormSections(gui_File,3,6) )
+F_sec_3 = get_label_settings( FormSections(gui_File,4,2) )
 F_sec_4 = get_label_settings( FormSections(gui_File,5,3) )
-F_sec_5 = get_label_settings( FormSections(gui_File,6,1) )
+F_sec_5 = get_label_settings( FormSections(gui_File,6,3) )
+F_sec_6 = get_label_settings( FormSections(gui_File,7,1) )
 
-Labels_for_UserForm = [F_sec_0,F_sec_1,F_sec_2,F_sec_3,F_sec_4,F_sec_5]
+Labels_for_UserForm = [F_sec_0,
+                       F_sec_1,
+                       F_sec_2,
+                       F_sec_3,
+                       F_sec_4,
+                       F_sec_5,
+                       F_sec_6]
 
 # ----------------------- RECORD PANEL ----------------------
 

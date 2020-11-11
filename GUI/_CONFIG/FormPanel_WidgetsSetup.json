@@ -22,8 +22,29 @@
             }
         }
     },
-
     "2":{
+        "0":{
+            "Type of Print":{
+                "widget":"Label",
+                "callFunction":false,
+                "functionName":null
+            }
+        },
+        "1":{
+            "RED":{
+                "widget":"Button",
+                "callFunction":false,
+                "functionName":null
+            },
+            "BLACK":{
+                "widget":"Button",
+                "callFunction":false,
+                "functionName":null
+            }
+        }
+    },
+
+    "3":{
         
         "0":{
             "Job ID":{
@@ -103,7 +124,7 @@
         }
     },
 
-    "3":{
+    "4":{
         "0":{
             "Type of Siding":{
                 "widget":"Label",
@@ -126,7 +147,7 @@
         }
     },
 
-    "4":{
+    "5":{
         "0":{
             "Profiles Selection":{
                 "widget":"Label",
@@ -172,7 +193,7 @@
         }
     },
 
-    "5":{
+    "6":{
         "0":{
             "Extras":{
                 "widget":"Label",
@@ -210,7 +231,7 @@
         }
     },
 
-    "6":{
+    "7":{
         "0":{
             "Submit":{
                 "widget":"Button",

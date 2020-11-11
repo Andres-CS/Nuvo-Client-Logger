@@ -20,20 +20,23 @@ class formPanel(scrolled.ScrolledPanel):
         '''------------------------------------------------------------
                           Declaration of Sections
         ------------------------------------------------------------'''
-        #----------Section 1 - Elements--------------
+        #----------Section 0 - Elements--------------
         self.sec_0_labels = Labels_for_UserForm[0]
         #----------Section 1 - Elements--------------
-        self.sec_1_labels = Labels_for_UserForm[1]
+        self.sec_1_1_labels = Labels_for_UserForm[1]
+        #----------Section 1 - Elements--------------
+        self.sec_1_labels = Labels_for_UserForm[2]
         #----------Section 2 - Elements--------------
-        self.sec_2_labels = Labels_for_UserForm[2]
+        self.sec_2_labels = Labels_for_UserForm[3]
         #----------Section 3 - Elements--------------
-        self.sec_3_labels = Labels_for_UserForm[3]
+        self.sec_3_labels = Labels_for_UserForm[4]
         #----------Section 4 - Elements--------------
-        self.sec_4_labels = Labels_for_UserForm[4]
+        self.sec_4_labels = Labels_for_UserForm[5]
         #----------Submit Button Section--------------
-        self.submitSection = Labels_for_UserForm[5]
+        self.submitSection = Labels_for_UserForm[6]
         #------------Sizers - Elements----------------
         sec_0_sizer = list()
+        sec_1_1__sizer = list()
         sec_1_sizer = list()
         sec_2_sizer = list()
         sec_3_sizer = list()
@@ -46,6 +49,7 @@ class formPanel(scrolled.ScrolledPanel):
                                 Creation of Sections
         ------------------------------------------------------------'''
         self.sec_0_widgets = self.section_0(self.sec_0_labels)
+        self.sec_1_1_widgets = self.section_1_1(self.sec_1_1_labels)
         self.sec_1_widgets = self.section_1(self.sec_1_labels)
         self.sec_2_widgets = self.section_2(self.sec_2_labels)
         self.sec_3_widgets = self.section_3(self.sec_3_labels)
@@ -56,13 +60,14 @@ class formPanel(scrolled.ScrolledPanel):
         ------------------------------------------------------------'''
         self.section_line_separator=list()
         #RANGE IS INPUT HARD-CODED BY THE CODER BASED ON THE NUMBER OF SECTIONS CREATED
-        for num_of_sections in range(5):
+        for num_of_sections in range(6):
             self.section_line_separator.append(self.InsertSeparatorLine("h"))
         
         '''------------------------------------------------------------
                                 Setting of Sizers
         ------------------------------------------------------------'''
         sec_0_sizer = self.set_sizers_section_0()
+        sec_1_1_sizer = self.set_sizers_section_1_1()
         sec_1_sizer = self.set_sizers_section_1()
         sec_2_sizer = self.set_sizers_section_2()
         sec_3_sizer = self.set_sizers_section_3()
@@ -71,14 +76,16 @@ class formPanel(scrolled.ScrolledPanel):
 
         App_sizer.Add(sec_0_sizer,0,wx.ALL | wx.EXPAND,5)
         App_sizer.Add(self.section_line_separator[0],0,wx.ALL | wx.EXPAND,5)
-        App_sizer.Add(sec_1_sizer,0,wx.ALL | wx.EXPAND,5)
+        App_sizer.Add(sec_1_1_sizer,0,wx.ALL | wx.EXPAND,5)
         App_sizer.Add(self.section_line_separator[1],0,wx.ALL | wx.EXPAND,5)
-        App_sizer.Add(sec_2_sizer,1,wx.ALL | wx.EXPAND,5)
+        App_sizer.Add(sec_1_sizer,0,wx.ALL | wx.EXPAND,5)
         App_sizer.Add(self.section_line_separator[2],0,wx.ALL | wx.EXPAND,5)
-        App_sizer.Add(sec_3_sizer,1,wx.ALL | wx.EXPAND,5)
+        App_sizer.Add(sec_2_sizer,1,wx.ALL | wx.EXPAND,5)
         App_sizer.Add(self.section_line_separator[3],0,wx.ALL | wx.EXPAND,5)
-        App_sizer.Add(sec_4_sizer,1,wx.ALL | wx.EXPAND,5)
+        App_sizer.Add(sec_3_sizer,1,wx.ALL | wx.EXPAND,5)
         App_sizer.Add(self.section_line_separator[4],0,wx.ALL | wx.EXPAND,5)
+        App_sizer.Add(sec_4_sizer,1,wx.ALL | wx.EXPAND,5)
+        App_sizer.Add(self.section_line_separator[5],0,wx.ALL | wx.EXPAND,5)
         App_sizer.Add(submitsection,1,wx.ALL | wx.EXPAND,5)
 
         self.SetSizer(App_sizer)
@@ -107,6 +114,16 @@ class formPanel(scrolled.ScrolledPanel):
 
         return sec_0_objs
 
+    def section_1_1(self,fields):
+        sec_1_1_objs = list()
+
+        sec_1_1_objs.append(self.InserLabel(fields[0]))
+        
+        for sec_2_item in fields[1:]:
+            #Sec 2 Buttons
+            sec_1_1_objs.append(self.InsertRadioButton(sec_2_item))
+        
+        return sec_1_1_objs
 
 
     '''Returns: list of lists'''
@@ -202,6 +219,26 @@ class formPanel(scrolled.ScrolledPanel):
             group_sizer.Add(wdgs,0,wx.ALL,5)
 
         return group_sizer
+    
+    def set_sizers_section_1_1(self):
+        print("SIZE FOR SECTION 1_1")
+        section_1_1 = wx.BoxSizer(wx.VERTICAL)
+        group_sizer = wx.BoxSizer(wx.HORIZONTAL)
+
+        #Sub-Section2.1 - Siding Title
+        section_1_1.Add(self.sec_1_1_widgets[0],0,wx.ALL,5)
+
+        #Sub-Section2.2 - Buttons
+        print()
+        for i in range(len(self.sec_1_1_widgets)):
+            #THIS COULD BE CODED IN A BETTER WAY WITH ARRAY SLICING | TRY TO FIX!!
+            if(i == 0):
+                continue
+            group_sizer.Add(self.sec_1_1_widgets[i],0,wx.ALL,5)
+
+        section_1_1.Add(group_sizer,0,wx.ALL,0)
+
+        return section_1_1
 
     ''' Create Sizer for Section_1'''
     def set_sizers_section_1(self):
@@ -360,6 +397,12 @@ class formPanel(scrolled.ScrolledPanel):
         #Collect Client Selected
         DATA["Client"]=self.sec_0_widgets[1].GetString(self.sec_0_widgets[1].GetSelection())
 
+         #Collect TypePrint. TypePrint will be stored in a list form.
+        if(self.sec_1_1_widgets[1].GetValue() == True):
+            DATA['TypePrint'] = 1
+        elif(self.sec_1_1_widgets[2].GetValue() == True):
+            DATA['TypePrint'] = 2
+
         #Collect Text Fields
         for item in range(len(self.sec_1_widgets)):
             #sec_1_labels -> [ wxlabel, , ]
@@ -427,11 +470,12 @@ class formPanel(scrolled.ScrolledPanel):
         resultData = dict()
 
         #Check there is no missing DATA
-        if(form_missingdata(self.sec_0_widgets,self.sec_1_widgets,self.sec_2_widgets,self.sec_3_widgets,self.sec_4_widgets) == True):
+        if(form_missingdata(self.sec_0_widgets, self.sec_1_1_widgets, self.sec_1_widgets,self.sec_2_widgets,self.sec_3_widgets,self.sec_4_widgets) == True):
             wx.MessageDialog(self,"PLEASE COMPLETE\nALL MISSING DATA.","WARNING", wx.OK | wx.ICON_EXCLAMATION).ShowModal()
         else:
             #Collect data entered by user
             userData = self.form_collect_user_data()
+            #Cast FLOT->INT 
             userDATA = form_correctDataType(userData)
 
             PAYLOAD["PAYLOAD"]["userData"] = userDATA
