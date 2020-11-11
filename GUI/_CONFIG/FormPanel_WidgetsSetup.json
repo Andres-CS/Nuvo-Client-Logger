@@ -31,12 +31,12 @@
             }
         },
         "1":{
-            "RED":{
+            "Preliminary":{
                 "widget":"Button",
                 "callFunction":false,
                 "functionName":null
             },
-            "BLACK":{
+            "Final":{
                 "widget":"Button",
                 "callFunction":false,
                 "functionName":null
