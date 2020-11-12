@@ -3,11 +3,15 @@
 import wx
 
 ''' Check if there is any user field missing, if so return TRUE otherwise FALSE '''
-def form_missingdata(section0,section1, section2, section3, section4):
+def form_missingdata(section0, section1_1, section1, section2, section3, section4):
     missing = False
 
     #Client Choice Menu with index 1
     if(section0[1].GetSelection() == -1):
+        missing = True
+
+    #----- Redio Box (Button) DATA -------
+    if(section1_1[0].GetSelection() == " NOT_FOUND"):
         missing = True
 
     #Test All Text fields are Entered
