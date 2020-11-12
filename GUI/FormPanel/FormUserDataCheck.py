@@ -10,8 +10,8 @@ def form_missingdata(section0, section1_1, section1, section2, section3, section
     if(section0[1].GetSelection() == -1):
         missing = True
 
-    #----- Radio Button DATA -------
-    if(section1_1[1].GetValue() == False | section1_1[2].GetValue() == False):
+    #----- Redio Box (Button) DATA -------
+    if(section1_1[0].GetSelection() == " NOT_FOUND"):
         missing = True
 
     #Test All Text fields are Entered

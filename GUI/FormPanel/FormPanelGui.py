@@ -103,6 +103,8 @@ class formPanel(scrolled.ScrolledPanel):
     '''
         ---------- SECTION METHODS ------------
     '''
+        
+    '''Returns: a list of wx widgets'''
     def section_0(self,labels):
         sec_0_objs = list()
         #Crate Label for clients
@@ -113,16 +115,11 @@ class formPanel(scrolled.ScrolledPanel):
         sec_0_objs.append(self.InsertButton(labels[2]))
 
         return sec_0_objs
-
+    
+    '''Returns: a list of wx widgets'''
     def section_1_1(self,fields):
         sec_1_1_objs = list()
-
-        sec_1_1_objs.append(self.InserLabel(fields[0]))
-        
-        for sec_2_item in fields[1:]:
-            #Sec 2 Buttons
-            sec_1_1_objs.append(self.InsertRadioButton(sec_2_item))
-        
+        sec_1_1_objs.append(self.InsertReadioBox(fields[0],fields[1:]))
         return sec_1_1_objs
 
 
@@ -221,23 +218,9 @@ class formPanel(scrolled.ScrolledPanel):
         return group_sizer
     
     def set_sizers_section_1_1(self):
-        print("SIZE FOR SECTION 1_1")
         section_1_1 = wx.BoxSizer(wx.VERTICAL)
-        group_sizer = wx.BoxSizer(wx.HORIZONTAL)
-
-        #Sub-Section2.1 - Siding Title
+        #RadioBox is consider a one single widget
         section_1_1.Add(self.sec_1_1_widgets[0],0,wx.ALL,5)
-
-        #Sub-Section2.2 - Buttons
-        print()
-        for i in range(len(self.sec_1_1_widgets)):
-            #THIS COULD BE CODED IN A BETTER WAY WITH ARRAY SLICING | TRY TO FIX!!
-            if(i == 0):
-                continue
-            group_sizer.Add(self.sec_1_1_widgets[i],0,wx.ALL,5)
-
-        section_1_1.Add(group_sizer,0,wx.ALL,0)
-
         return section_1_1
 
     ''' Create Sizer for Section_1'''
@@ -368,7 +351,14 @@ class formPanel(scrolled.ScrolledPanel):
 
     def InsertRadioButton(self,label):
         return wx.RadioButton(self,-1,label=label)
-
+    
+    def InsertReadioBox(self,lablebox,options,dimension=1,stylerc="r"):
+        if stylerc != "r":
+            stylerc = wx.RA_SPECIFY_COLS
+        else:
+            stylerc = wx.RA_SPECIFY_ROWS
+        return wx.RadioBox(self, wx.ID_ANY, label=lablebox, size=wx.Size(200,45), choices=options, majorDimension=dimension, style=stylerc)
+    
     def InsertButton(self,label,pos=(0,0)):
         return wx.Button(self,wx.ID_ANY,label,pos=pos)
 
@@ -398,10 +388,8 @@ class formPanel(scrolled.ScrolledPanel):
         DATA["Client"]=self.sec_0_widgets[1].GetString(self.sec_0_widgets[1].GetSelection())
 
          #Collect TypePrint. TypePrint will be stored in a list form.
-        if(self.sec_1_1_widgets[1].GetValue() == True):
-            DATA['TypePrint'] = 1
-        elif(self.sec_1_1_widgets[2].GetValue() == True):
-            DATA['TypePrint'] = 2
+        itemSelected_idx = self.sec_1_1_widgets[0].GetSelection()
+        DATA['TypePrint'] = self.sec_1_1_widgets[0].GetString(itemSelected_idx)
 
         #Collect Text Fields
         for item in range(len(self.sec_1_widgets)):
