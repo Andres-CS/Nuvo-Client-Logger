@@ -46,7 +46,7 @@ class databaseBridge():
             for key2 in externalData["resultData"]:
                 data[MapSchema[key2]] = externalData["resultData"][key2]
         except:
-            print("SOMETHING HAPPENED.\nDATA COULD NOT BE MAPPED TO FIELDS")
+            print("SOMETHING HAPPENED.\nDATA COULD NOT BE MAPPED TO *FIELDS*")
         
         #LASTLY, MAP DATA ACCORDING TO TABLE
         try:
@@ -56,7 +56,13 @@ class databaseBridge():
             with open(table_file,'r') as TableSchema:
                 Tables = json.load(TableSchema)
             
-            #MAP DATA TO ALL TABLES
+            #ID WHICH TABLE TO MAP
+            if data["typeprint"] == "Preliminary":
+                Tables["database"]["db_tables"].pop("FinalPrint_table")
+            else:
+                Tables["database"]["db_tables"].pop("PrelimPrint_table")
+            
+            #START MAPPING TO TABLES
             for F in data:
                 for T in Tables["database"]["db_tables"]:
                     if F in Tables["database"]["db_tables"][T]["fields"]:
@@ -65,7 +71,7 @@ class databaseBridge():
                         else:
                             new_data[T] = {F:data[F]}
         except:
-            print("SOMETHING HAPPENED.\nDATA COULD NOT BE MAPPED TO TABLES")
+            print("SOMETHING HAPPENED.\nDATA COULD NOT BE MAPPED TO *TABLES*")
         
         return new_data
     
