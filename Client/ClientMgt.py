@@ -32,10 +32,12 @@ class clients():
         lst.close()
         print("\nLIST OF CLIENTS FROM TXT FILE")
         print(clt)
-        self.PAYLOAD["PAYLOAD"]["userData"]["Client"]=clt
+        for c in clt:
+            self.PAYLOAD["PAYLOAD"]["userData"]["Client"]=c
+            self.obj.send2DB(self.PAYLOAD)
         print()
 
-        self.obj.send2DB(self.PAYLOAD)
+       
         
 
         
