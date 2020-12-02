@@ -3,9 +3,11 @@ import os
 
 # Set Up File -> Reads all the files needed to setup the GUI part of the application.
 from Profiles.paperPfl import paperPfl
-from Client.ClientMgt import get_clients
+from Client.ClientMgt import *
 
-
+x = clients()
+x.add_clients()
+print("TESTING NEW CLIENT MNGR")
 
 additionalData = {
     "Clients":get_clients(),

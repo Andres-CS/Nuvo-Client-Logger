@@ -78,11 +78,13 @@ class databaseBridge():
 
     def send2DB(self, PAYLOAD):
         _STATUS = None
+        print(PAYLOAD)
         _RECORD = self._Map(PAYLOAD["PAYLOAD"])
         print("Data Has Been Mapped.")
         #ID CURD'S VALUE
         if(PAYLOAD["CRUD"] == "CREATE"):
             print(PAYLOAD["CRUD"])
+            print(_RECORD)
             DBobj = DB_Mutator(self.database)
             #_STATUS = DBobj.some_method()
             #return _STATUS
