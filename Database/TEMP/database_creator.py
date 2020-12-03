@@ -95,11 +95,11 @@ class DB_Creator:
                 rfs = rfs[:-2]
                 rfs = rfs + ")"
                 sql.append(rfs)
+                print(sql)
         else:
             return None
         #Merge/Join SQL statement
         sql = " ".join(sql)
-        print(sql)
         return sql
 
 #-----------------------------------------------------------------------------------------------
@@ -118,11 +118,12 @@ class DB_Creator:
         for name in tables:
             # --- Part 1 ---
             sql.append(f"CREATE TABLE IF NOT EXISTS {name} (")
+            
             # --- Part 2 ---
             vls = " "
             for fieldName in tables[name]["fields"]:
-                vls = vls + fieldName + " " + tables[name]["fields"][fieldName] + ", "
-            
+                vls = vls + fieldName + " " + tables[name]["fields"][fieldName]+ ", "
+
             # --- Part 3 ---
             #Check for PRIMARY KEYs
             if tables[name]["pk"]["exist"]:
@@ -133,7 +134,7 @@ class DB_Creator:
              #Check for FOREIGN KEYs
             if tables[name]["fk"]["exist"]:
                 vls = vls + self._Get_pf_key("FOREIGN",tables[name]["fk"])
-                #vls = vls + ", "
+                vls = vls + ", "
 
             #Remove coma from last field
             sql.append(vls[:-2])

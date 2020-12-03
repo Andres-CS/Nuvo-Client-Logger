@@ -26,7 +26,9 @@ from GUI.RecordsPanel.RecordPanelGui import recordPanel
 def main():
     #Database Setup
     #DB_Setup()
+    print(" *** READ *** ")
     setUp()
+    print(" *** READ *** ")
 
     #Create Application Obj
     application = JobRegister()

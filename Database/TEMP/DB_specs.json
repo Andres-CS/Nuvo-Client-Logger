@@ -14,7 +14,8 @@
                 "pk":{
                     "exist":true,
                     "fields":["id"],
-                    "reference":false
+                    "reference":false,
+                    "autoincrement":true
                 },
                 "fk":{
                     "exist":false
@@ -33,7 +34,8 @@
                 "pk":{
                     "exist":true,
                     "fields":["id"],
-                    "reference":false
+                    "reference":false,
+                    "autoincrement":true
                 },
                 "fk":{
                     "exist":true,
@@ -67,7 +69,8 @@
                 "pk":{
                     "exist":true,
                     "fields":["id"],
-                    "reference":false
+                    "reference":false,
+                    "autoincrement":false
                 },
                 "fk":{
                     "exist":true,
@@ -100,7 +103,8 @@
                 "pk":{
                     "exist":true,
                     "fields":["id"],
-                    "reference":false
+                    "reference":false,
+                    "autoincrement":false
                 },
                 "fk":{
                     "exist":true,

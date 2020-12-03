@@ -56,11 +56,12 @@ class databaseBridge():
             with open(table_file,'r') as TableSchema:
                 Tables = json.load(TableSchema)
             
-            #ID WHICH TABLE TO MAP
-            if data["typeprint"] == "Preliminary":
-                Tables["database"]["db_tables"].pop("FinalPrint_table")
-            else:
-                Tables["database"]["db_tables"].pop("PrelimPrint_table")
+            #ID WHICH TABLE TO MAP --- I THINK THIS CAN BE IMPROVED!!!
+            if "typeprint" in data:
+                if data["typeprint"] == "Preliminary":
+                    Tables["database"]["db_tables"].pop("FinalPrint_table")
+                else:
+                    Tables["database"]["db_tables"].pop("PrelimPrint_table")
             
             #START MAPPING TO TABLES
             for F in data:
@@ -78,13 +79,14 @@ class databaseBridge():
 
     def send2DB(self, PAYLOAD):
         _STATUS = None
-        print(PAYLOAD)
+        #print(PAYLOAD)
         _RECORD = self._Map(PAYLOAD["PAYLOAD"])
-        print("Data Has Been Mapped.")
+        #print("Data Has Been Mapped.")
         #ID CURD'S VALUE
         if(PAYLOAD["CRUD"] == "CREATE"):
-            print(PAYLOAD["CRUD"])
-            print(_RECORD)
+            #print(PAYLOAD["CRUD"])
+            #print(_RECORD)
+            print()
             DBobj = DB_Mutator(self.database)
             #_STATUS = DBobj.some_method()
             #return _STATUS

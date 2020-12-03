@@ -95,6 +95,7 @@ class DB_Creator:
                 rfs = rfs[:-2]
                 rfs = rfs + ")"
                 sql.append(rfs)
+
         else:
             return None
         #Merge/Join SQL statement
@@ -133,7 +134,7 @@ class DB_Creator:
              #Check for FOREIGN KEYs
             if tables[name]["fk"]["exist"]:
                 vls = vls + self._Get_pf_key("FOREIGN",tables[name]["fk"])
-                #vls = vls + ", "
+                vls = vls + ", "
 
             #Remove coma from last field
             sql.append(vls[:-2])
@@ -144,8 +145,6 @@ class DB_Creator:
             #Merged query
             sql = " ".join(sql)
             
-            print(sql)
-            print("-----------------------------")
             #Execute query
             self.Doer.execute(sql)
             
@@ -153,9 +152,3 @@ class DB_Creator:
         
         #Save action in DB
         self.Conn.commit()
-
-        
-        
-    
-                        
-        

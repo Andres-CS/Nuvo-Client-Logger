@@ -99,6 +99,22 @@ def _DB_Setup():
         #Go to App's ROOT folder
         os.chdir("..")
         _set_DB_size_warning()
+    else:
+        #
+        #   TESTING 
+        #
+        print(" --- DATABASE DOES NOT EXISTS --- ")
+        print(" ---     CREATING DATABASE    --- ")
+        from Database.database_creator import DB_Creator
+        with open("C:\\Users\\18628\Desktop\\Development\\Nuvo\\Nuvo-Client-Logger\\Database\\_CONFIG\\DB_specs.json", 'r') as db:
+            spcs = json.load(db)
+        db.close()
+        db = DB_Creator(spcs)
+        print(" ---     DATABASE CREATED    --- ")
+        #
+        #   TESTING 
+        #
+
     #Go to App's ROOT folder
     os.chdir("..")
     _update_DB_Config_File()
