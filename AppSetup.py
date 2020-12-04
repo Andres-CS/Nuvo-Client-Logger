@@ -103,14 +103,15 @@ def _DB_Setup():
         #
         #   TESTING 
         #
-        print(" --- DATABASE DOES NOT EXISTS --- ")
-        print(" ---     CREATING DATABASE    --- ")
+        print(" --- DATABASE DOES NOT EXISTS")
+        print(" --- CREATING DATABASE")
         from Database.database_creator import DB_Creator
-        with open("C:\\Users\\18628\Desktop\\Development\\Nuvo\\Nuvo-Client-Logger\\Database\\_CONFIG\\DB_specs.json", 'r') as db:
+        spec_file_db = os.path.join(os.path.dirname(os.path.abspath(__file__)),"Database\\_CONFIG\\DB_specs.json")
+        with open(spec_file_db, 'r') as db:
             spcs = json.load(db)
         db.close()
         db = DB_Creator(spcs)
-        print(" ---     DATABASE CREATED    --- ")
+        print(" --- DATABASE CREATED")
         #
         #   TESTING 
         #

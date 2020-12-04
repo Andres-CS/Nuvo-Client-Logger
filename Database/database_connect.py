@@ -8,9 +8,6 @@ import sqlite3
 import json
 import os
 
-spec_file_db = os.path.join(os.path.dirname(__file__),"DB_specs.json")
-
-
 class DB_Connector:
     '''
     __init__() -  Class constructor.

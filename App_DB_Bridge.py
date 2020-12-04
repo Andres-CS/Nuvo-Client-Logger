@@ -84,8 +84,8 @@ class databaseBridge():
         #print("Data Has Been Mapped.")
         #ID CURD'S VALUE
         if(PAYLOAD["CRUD"] == "CREATE"):
-            #print(PAYLOAD["CRUD"])
-            #print(_RECORD)
+            print(PAYLOAD["CRUD"])
+            print(_RECORD)
             print()
             DBobj = DB_Mutator(self.database)
             #_STATUS = DBobj.some_method()
