@@ -1,28 +1,22 @@
 import os
 import json
 from App_DB_Bridge import databaseBridge
+from API import PAYLOAD
 
 class clients():
     def __init__(self):
         self.obj = databaseBridge()
         
-        #Payload Template
-        self.PAYLOAD = {
-            "CRUD" : "",
-            "PAYLOAD": {
-                "userData" : dict(),
-                "resultData" : dict()
-            }
-        }
-        
     def get_clients(self):
         #Define CRUD
-        self.PAYLOAD["CRUD"] = "READ"
+        PAYLOAD["CRUD"] = "READ"
+        PAYLOAD["SECTION"] = "ClientMgr"
         self.obj.send2DB()
 
     def add_clients(self):
         #Define CRUD
-        self.PAYLOAD["CRUD"] = "CREATE"
+        PAYLOAD["CRUD"] = "CREATE"
+        PAYLOAD["SECTION"] = "ClientMgr"
 
         #TMP
         clt=list()
@@ -32,8 +26,8 @@ class clients():
         lst.close()
 
         for c in clt:
-            self.PAYLOAD["PAYLOAD"]["userData"]["Client"]=c
-            self.obj.send2DB(self.PAYLOAD)
+            PAYLOAD["PAYLOAD"]["userData"]["Client"]=c
+            self.obj.send2DB(PAYLOAD)
        
         
 

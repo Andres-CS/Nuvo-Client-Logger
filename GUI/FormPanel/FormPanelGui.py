@@ -11,6 +11,8 @@ from Profiles.paperPfl import paperPfl
 from .FormUserDataCheck import form_missingdata, form_checkDatatype, form_correctDataType
 from programALU import ALU
 
+from API import PAYLOAD
+
 
 class formPanel(scrolled.ScrolledPanel):
     def __init__(self,parent, Labels_for_UserForm):
@@ -449,10 +451,10 @@ class formPanel(scrolled.ScrolledPanel):
     #Submitt Button Handler
     def onClick_Submitt_Button(self,event):
 
-        PAYLOAD = {
-            "CRUD":"CREATE",
-            "PAYLOAD": dict()
-        }
+        #Start FILLING UP the API
+        PAYLOAD["SECTION"] = "Form"
+        PAYLOAD["CRUD"]="CREATE"
+
         #User DATA and RESULTS
         userData = dict()
         resultData = dict()
