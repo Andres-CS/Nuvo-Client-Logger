@@ -3,6 +3,9 @@ PAYLOAD = {
     "CRUD":"",
     "PAYLOAD":{
         "userData":dict(),
-        "resultData":dict()
+        "resultData":{
+            "STATUS":"",
+            "MESSAGES":""
+        }
     }
 }

@@ -9,9 +9,9 @@ class DB_Mutator(DB_Connector):
         DB_Connector.__init__(self,DB_file)
 #-----------------------------------------------------------------------------------------------
     '''
-    Add_New_Row() - method
+    Add_New_Entry() - method
     '''
-    def Add_New_Row(self, Data):
+    def Add_New_Entry(self, Data):
         
         self.Doer.execute(query)
         self.Conn.commit()

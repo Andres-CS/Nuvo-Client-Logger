@@ -468,12 +468,17 @@ class formPanel(scrolled.ScrolledPanel):
             #Cast FLOT->INT 
             userDATA = form_correctDataType(userData)
 
-            PAYLOAD["PAYLOAD"]["userData"] = userDATA
-
             #Test data' dataype
             if(form_checkDatatype(userData) == True):
+                #Calculate Resources Quantity
                 resultData = ALU(userData)
-                PAYLOAD["PAYLOAD"]["resultData"]= resultData
+
+                #Combine userData & resultData INTO a single PAYLOAD
+                for k in resultData:
+                    userDATA[k]=resultData[k]
+                
+                #Put DATA into API
+                PAYLOAD["PAYLOAD"]["userData"] = userDATA
 
                 #SEND TO RESULT DIALOG
                 result_Dialog(PAYLOAD)

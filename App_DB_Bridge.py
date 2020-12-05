@@ -38,13 +38,10 @@ class databaseBridge():
             for key1 in externalData["userData"]:
                 # --- THIS NEEDS FIXING ON THE GUI SIDE ---
                 if key1 == "TextInput":
-                    print("TextInput Read")
+                    print("TextInput Read - THIS NEEDS FIXING")
                 # --- THIS NEEDS FIXING ON THE GUI SIDE ---
                 else:
                     data[MapSchema[key1]] = externalData["userData"][key1]
-            #MAP RESULTDATA
-            for key2 in externalData["resultData"]:
-                data[MapSchema[key2]] = externalData["resultData"][key2]
         except:
             print("SOMETHING HAPPENED.\nDATA COULD NOT BE MAPPED TO *FIELDS*")
         

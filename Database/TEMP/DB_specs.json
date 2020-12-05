@@ -81,6 +81,7 @@
             },
 
             "FinalPrint_table":{
+                "table_name": "finalprint_table",
                 "fields":{
                     "id": "INTEGER",
                     "job_id": "INTEGER",
