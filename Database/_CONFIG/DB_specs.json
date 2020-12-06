@@ -73,7 +73,7 @@
                     "exist":true,
                     "fields":["job_id"],
                     "reference":"job_table",
-                    "reference_fields":["job_id"]
+                    "reference_fields":["id"]
                 }
             },
 
@@ -107,7 +107,7 @@
                     "exist":true,
                     "fields":["job_id"],
                     "reference":"job_table",
-                    "reference_fields":["job_id"]
+                    "reference_fields":["id"]
                 }
             }
 		}
